@@ -1,6 +1,9 @@
 <?php
 
+//Heather Monatt
+//January 27th, 2021
 //This is my CONTROLLER
+
 
 //Turn on error reporting
 ini_set('display_errors', 1);
