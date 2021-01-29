@@ -1,10 +1,10 @@
+
+/* Navbar */
 .navbar {
 
     background-color: hotpink;
     top: 0; /* Position the navbar at the top of the page */
     color: black;
-
-
 }
 
 /* Links inside the navbar */
@@ -17,40 +17,25 @@
     font-weight: bolder;
 }
 
-
+/* Navbar Link Hover */
 .navbar a:hover {
     background: hotpink;
     color: black;
 
 }
 
-
-
+/* Dropdown Menu Background Color */
 .dropdown-menu{
     background-color: white;
 }
 
-.li{
-    color: black;
-}
-
-
+/* Body */
 body{
     background-color: black;
     margin: 0 150px;
 }
 
-/*.navbar{
-    background-color: #FF69B4;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-}
-*/
-
-/** h1 and h3 Elements **/
+/* h1 and h2 Elements */
 h1, h2 {
     color: hotpink;
     text-align: center;
@@ -58,47 +43,47 @@ h1, h2 {
 
 }
 
+/* h3 Elements */
 h3{
     color: hotpink;
     text-align: center;
 }
 
+/* h4 Elements */
 h4{
     color: pink;
 }
 
+/* h5 Elements */
 h5{
     color: deeppink;
     text-align: center;
 }
 
-.nav-link:hover{
-    color:hotpink;
-    text-decoration:none;
-}
-
-
-
+/* Testimonials - Blockquotes */
 #testimonial1, #testimonial2, #testimonial3{
     color: red;
 }
 
+/* Line Color */
 hr{
     background-color: pink;
 }
 
-
+/* Main Div */
 #main{
     background-color: black;
     padding-top: 50px;
     padding-bottom: 150px;
 }
 
+/* Left Div */
 #left{
     padding-left: 150px;
     padding-right: 50px;
 }
 
+/* Right Div */
 #right{
     padding-left: 50px;
     padding-right: 150px;
