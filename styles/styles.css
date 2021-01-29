@@ -74,6 +74,14 @@ h5{
     text-decoration:none;
 }
 
+#testimonial{
+    color: red;
+}
+
+hr{
+    background-color: pink;
+}
+
 
 #main{
     background-color: black;
