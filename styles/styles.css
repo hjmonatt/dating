@@ -1,0 +1,40 @@
+body{
+    color: ghostwhite;
+}
+
+/** h1 and h3 Elements **/
+h1, h3 {
+    color: hotpink;
+    text-align: center;
+    padding-right: 150px;
+}
+
+#main{
+    background-color: black;
+    padding-left: 100px;
+    padding-top: 50px;
+    padding-right: 100px;
+    padding-bottom: 150px;
+}
+
+html {
+    font-size: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+    html {
+        font-size: 1.2rem;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    html {
+        font-size: 1.4rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    html {
+        font-size: 1.6rem;
+    }
+}
