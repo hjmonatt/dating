@@ -1,5 +1,55 @@
+.navbar {
+
+    background-color: hotpink;
+    top: 0; /* Position the navbar at the top of the page */
+
+
+}
+
+/* Links inside the navbar */
+.navbar a {
+    float: left;
+    display: block;
+    color: hotpink;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+/** Navbar **/
+.navbar a:hover {
+    background: black;
+    color: hotpink;
+
+}
+
+.img{
+    position: center;
+}
+
+
 body{
-    color: ghostwhite;
+    background-color: black;
+    margin: 0 150px;
+}
+
+.btn{
+   position: center;
+}
+
+/*.navbar{
+    background-color: #FF69B4;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+*/
+
+h5:hover{
+    color: hotpink;
 }
 
 /** h1 and h3 Elements **/
@@ -11,30 +61,27 @@ h1, h3 {
 
 #main{
     background-color: black;
-    padding-left: 100px;
     padding-top: 50px;
-    padding-right: 100px;
     padding-bottom: 150px;
 }
 
-html {
-    font-size: 1rem;
+#left{
+    padding-left: 150px;
+    padding-right: 50px;
 }
 
-@include media-breakpoint-up(sm) {
-    html {
-        font-size: 1.2rem;
+#right{
+    padding-left: 50px;
+    padding-right: 150px;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For tablets: */
+    .linkOne {
+        margin: 5px;
     }
-}
 
-@include media-breakpoint-up(md) {
-    html {
-        font-size: 1.4rem;
-    }
-}
-
-@include media-breakpoint-up(lg) {
-    html {
-        font-size: 1.6rem;
+    .linkOne {
+        padding: 5px 10px;
     }
 }

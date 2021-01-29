@@ -19,14 +19,41 @@
 
 </head>
 <body>
-<div class="container"></div>
-<nav class="navbar navbar-light" style="background-color: #FF69B4;">
-    <a class="navbar-brand" href="#"><strong>Boo'd Up</strong></a>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <h4><a class="navbar-brand" href="#">BOO'd UP</a></h4>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <h5><a class="nav-link" tabindex="-1" href="#" target="_blank">Ghosting</a></h5>
+            </li>
+            <li class="nav-item">
+                <h5><a class="nav-link" tabindex="-1" href="#" target="_blank">BOOfiles</a></h5>
+            </li>
+            <li class="nav-item dropdown">
+                <h5><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Pricing
+                </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#" target="_blank">Basic Boo</a>
+                        <a class="dropdown-item" href="#" target="_blank">Bougie Boo</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" target="_blank">Spooktacular</a>
+                    </div>
+                </h5>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
 </nav>
-</div>
 <div class="container-fluid" id="main">
     <div class="row">
-        <div class="col">
+        <div class="col" id="left">
             <h1 class="display-1"><strong>Boo'd Up!</strong></h1>
             <br>
             <h3>Have you been <strong>GHOSTED</strong> too many times?! Do you find yourself askin',
@@ -36,11 +63,13 @@
                 eternal life partner! It's time to get...</h3>
             <br>
             <h3><strong>BOO'D UP!</strong></h3>
+            <br>
+            <button id="boofile" type="button" class="btn btn-primary btn-lg">Create A BOOfile!</button>
         </div>
         <br>
         <br>
-        <div class="col">
-            <img class="rounded" src="images/boos.jpg">
+        <div class="col" id="right">
+            <img class="d-flex align-self-end mr-3 img-fluid rounded" alt="boo" src="images/boos.jpg">
         </div>
     </div>
 </div>
