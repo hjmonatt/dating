@@ -2,6 +2,7 @@
 
     background-color: hotpink;
     top: 0; /* Position the navbar at the top of the page */
+    color: black;
 
 
 }
@@ -10,17 +11,16 @@
 .navbar a {
     float: left;
     display: block;
-    color: hotpink;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-weight: bolder;
 }
 
-/** Navbar **/
 .navbar a:hover {
-    background: black;
-    color: hotpink;
+    background: hotpink;
+    color: black;
 
 }
 
@@ -48,16 +48,42 @@ body{
 }
 */
 
+/** h1 and h3 Elements **/
+h1, h2 {
+    color: hotpink;
+    text-align: center;
+    padding-right: 150px;
+
+}
+
+h3{
+    color: hotpink;
+    text-align: center;
+}
+
+h4{
+    color: pink;
+}
+
 h5:hover{
     color: hotpink;
 }
 
-/** h1 and h3 Elements **/
-h1, h3 {
-    color: hotpink;
+h5{
+    color: deeppink;
     text-align: center;
-    padding-right: 150px;
 }
+
+.links:hover{
+    color:hotpink;
+    text-decoration:none;
+}
+
+.links h5:hover{
+    background: black;
+    color:hotpink;
+}
+
 
 #main{
     background-color: black;
