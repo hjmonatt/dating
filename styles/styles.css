@@ -11,10 +11,9 @@
 .navbar a {
     float: left;
     display: block;
-    color: black;
+    color: hotpink;
     text-align: center;
     padding: 14px 16px;
-    text-decoration: none;
     font-weight: bolder;
 }
 
@@ -22,6 +21,10 @@
     background: hotpink;
     color: black;
 
+}
+
+h5{
+    color:black;
 }
 
 .img{
@@ -32,10 +35,6 @@
 body{
     background-color: black;
     margin: 0 150px;
-}
-
-.btn{
-   position: center;
 }
 
 /*.navbar{
@@ -65,23 +64,14 @@ h4{
     color: pink;
 }
 
-h5:hover{
-    color: hotpink;
-}
-
 h5{
     color: deeppink;
     text-align: center;
 }
 
-.links:hover{
+.nav-link:hover{
     color:hotpink;
     text-decoration:none;
-}
-
-.links h5:hover{
-    background: black;
-    color:hotpink;
 }
 
 
