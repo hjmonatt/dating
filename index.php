@@ -29,9 +29,9 @@ $f3->route('GET /', function() {
 //Define a personal profile route
 $f3->route('GET /profile', function() {
 
-    echo "Profile 1";
-    //$view = new Template();
-    //echo $view->render('views/profile1.html');
+    //echo "Profile 1";
+    $view = new Template();
+    echo $view->render('views/profile1.html');
 });
 
 

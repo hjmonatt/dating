@@ -43,14 +43,63 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container mt-5 border border-3 border-light">
+    <br>
     <h1>Personal Information</h1>
+    <hr>
     <form action="profile2" method="post">
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName"><br><br>
+        <!-- Left Side -->
+        <div class="col-md-8">
+        <!-- First Name -->
+            <div class="form-group">
+             <label for="firstName"><strong>First Name</strong></label>
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Sarah">
+            </div>
+        <!-- Last Name -->
+        <div class="form-group">
+            <label for="lastName"><strong>Last Name</strong></label>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Smith">
+        </div>
+        <!-- Age -->
+        <div class="form-group">
+            <label for="age"><strong>Age</strong></label>
+            <input type="text" class="form-control" id="age" name="age" placeholder="30">
+        </div>
 
-        <input type="submit" value="Next>">
+        <!-- Gender Radios -->
+        <label><strong>Gender</strong></label><br>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genderRadios" id="male" value="male">
+            <label class="form-check-label" for="male"><strong>Male</strong></label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genderRadios" id="female" value="female">
+            <label class="form-check-label" for="female"><strong>Female</strong></label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genderRadios" id="non-binary" value="non-binary">
+            <label class="form-check-label" for="non-binary"><strong>Non-Binary</strong></label>
+        </div>
+            <br><br>
+            <!-- Phone Number -->
+            <div class="form-group">
+                <label for="phone"><strong>Phone Number</strong></label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="555-867-5309">
+            </div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="col-md-4">
+            <br>
+            <br>
+
+        </div>
+        <button class="btn btn-primary btn-lg float-right" type="submit">Next ></button>
+
     </form>
+
+
+</div>
 </div>
 
 

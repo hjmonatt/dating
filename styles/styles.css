@@ -35,8 +35,14 @@ body{
     margin: 0 150px;
 }
 
-/* h1 and h2 Elements */
-h1, h2 {
+/* h1 Elements */
+h1 {
+    color: deeppink;
+    text-align: left;
+}
+
+/* h2 Elements */
+h2 {
     color: hotpink;
     text-align: center;
     padding-right: 150px;
@@ -58,6 +64,11 @@ h4{
 h5{
     color: deeppink;
     text-align: center;
+}
+
+label{
+    color: deeppink;
+    font-size: large;
 }
 
 /* Testimonials - Blockquotes */
