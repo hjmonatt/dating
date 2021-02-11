@@ -42,67 +42,71 @@
         </form>
     </div>
 </nav>
-
 <div class="container mt-5 border border-3 border-light">
     <br>
     <h1>Personal Information</h1>
     <hr>
     <form action="profile2" method="post">
-        <!-- Left Side -->
-        <div class="col-md-8">
-        <!-- First Name -->
-            <div class="form-group">
-             <label for="firstName"><strong>First Name</strong></label>
-                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Sarah">
+        <div class="row g-0">
+            <!-- Left Side -->
+            <div class="col-md-8" id="left">
+                <!-- First Name -->
+                <div class="form-group">
+                    <label for="firstName"><strong>First Name</strong></label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Sarah">
+                </div>
+                <!-- Last Name -->
+                <div class="form-group">
+                    <label for="lastName"><strong>Last Name</strong></label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Smith">
+                </div>
+                <!-- Age -->
+                <div class="form-group">
+                    <label for="age"><strong>Age</strong></label>
+                    <input type="text" class="form-control" id="age" name="age" placeholder="30">
+                </div>
+                <!-- Gender Radios -->
+                <label><strong>Gender</strong></label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genderRadios" id="male" value="male">
+                    <label class="form-check-label" for="male"><strong>Male</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genderRadios" id="female" value="female">
+                    <label class="form-check-label" for="female"><strong>Female</strong></label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genderRadios" id="non-binary" value="non-binary">
+                    <label class="form-check-label" for="non-binary"><strong>Non-Binary</strong></label>
+                </div>
+                <br><br>
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label for="phone"><strong>Phone Number</strong></label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="555-867-5309">
+                </div>
             </div>
-        <!-- Last Name -->
-        <div class="form-group">
-            <label for="lastName"><strong>Last Name</strong></label>
-            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Smith">
-        </div>
-        <!-- Age -->
-        <div class="form-group">
-            <label for="age"><strong>Age</strong></label>
-            <input type="text" class="form-control" id="age" name="age" placeholder="30">
-        </div>
-
-        <!-- Gender Radios -->
-        <label><strong>Gender</strong></label><br>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genderRadios" id="male" value="male">
-            <label class="form-check-label" for="male"><strong>Male</strong></label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genderRadios" id="female" value="female">
-            <label class="form-check-label" for="female"><strong>Female</strong></label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="genderRadios" id="non-binary" value="non-binary">
-            <label class="form-check-label" for="non-binary"><strong>Non-Binary</strong></label>
-        </div>
-            <br><br>
-            <!-- Phone Number -->
-            <div class="form-group">
-                <label for="phone"><strong>Phone Number</strong></label>
-                <input type="text" class="form-control" id="phone" name="phone" placeholder="555-867-5309">
+            <!-- Right Side -->
+            <div class="col-md-4" id="right">
+                <div class="card" >
+                    <div class="card-body text-center">
+                        <p><strong>Note:</strong> All information entered in protected by our <a href>privacy policy</a>.
+                            Profile information can only be viewed by others with your permission.
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <br>
             </div>
-        </div>
-
-        <!-- Right Side -->
-        <div class="col-md-4">
-            <br>
-            <br>
-
         </div>
         <button class="btn btn-primary btn-lg float-right" type="submit">Next ></button>
-
+        <br>
     </form>
-
-
+    <br><br>
 </div>
-</div>
-
-
+<br>
+<br>
+<br>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
