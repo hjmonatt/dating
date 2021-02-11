@@ -69,7 +69,18 @@ h5{
 label{
     color: deeppink;
     font-size: large;
+    padding-left: 10px;
 }
+
+input{
+    margin-left: 10px;
+}
+
+#radios
+{
+    padding-left: 10px;
+}
+
 
 /* Testimonials - Blockquotes */
 #testimonial1, #testimonial2, #testimonial3{
