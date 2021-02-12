@@ -66,6 +66,11 @@ h5{
     text-align: center;
 }
 
+/* h6 Elements */
+h6{
+    color: red;
+}
+
 /* Labels */
 label{
     color: deeppink;
@@ -77,9 +82,26 @@ input{
     margin-left: 20px;
 }
 
+/* Summary List */
+#summaryList{
+    padding-left: 70px;
+}
+
+/* Label Positioning */
 #ageLabel, #fnameLabel, #lnameLabel, #genderLabel, #phoneLabel, #emailLabel,
 #stateLabel, #seekingLabel{
     padding-left: 20px;
+}
+
+/* Label Positioning */
+#bioLabel{
+    padding-left: 90px;
+}
+
+/* Biography */
+#bioBlurb{
+    padding-left: 90px;
+    padding-right: 20px;
 }
 
 /* Radio Div*/
@@ -88,10 +110,12 @@ input{
     padding-left: 20px;
 }
 
+/* Indoor Interest Checkmarks */
 #indoorChecks{
     padding-left: 50px;
 }
 
+/* Outdoor Interest Checkmarks */
 #outdoorChecks{
     padding-left: 50px;
 }
@@ -101,11 +125,13 @@ input{
     padding-left: 20px;
 }
 
+/* Indoor Interest labels */
 #indoorActs{
     padding-top: 20px;
     padding-left: 30px;
 }
 
+/* Outdoor Interest labels */
 #outdoorActs{
     padding-top: 20px;
     padding-left: 30px;
@@ -155,6 +181,7 @@ hr{
 
 }
 
+/* Right3 Div */
 #right3{
     padding-right: 20px;
     padding-bottom: 30px;

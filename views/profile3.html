@@ -1,3 +1,7 @@
+<!--Heather Monatt
+   February 10th, 2021
+   This is my profile form 3 page - gathers interests (indoor and outdoor)-->
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -42,100 +46,99 @@
         </form>
     </div>
 </nav>
-<div class="container mt-5 border border-3 border-light">
+<div class="container mt-5 border border-3 border-light rounded">
     <br>
+    <!-- Interests -->
     <h1>Interests</h1>
     <hr>
     <form action="summary" method="post">
         <div class="row g-0">
+            <!-- Indoor Interests -->
             <div class="form-group">
-            <label class="col-lg-5 control-label" id="indoorActs"><strong>In-door Interests</strong></label>
-            <div class="d-flex flex-wrap justify-content-center mb-3" id="indoorChecks">
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="meditating" id="meditating" name="indoor[]">
-                    <label class="form-check-label" for="meditating">Meditating</label>
-                </div>
-                <div class="form-check col-md-3">
-                        <input class="form-check-input" type="checkbox" value="moviesTV" id="moviesTV" name="indoor[]">
+                <label class="col-lg-5 control-label" id="indoorActs"><strong>In-door Interests</strong></label>
+                <div class="d-flex flex-wrap justify-content-center mb-3" id="indoorChecks">
+                    <div class="form-check col-md-3">
+                        <input class="form-check-input" type="checkbox" value="Meditating" id="meditating" name="interests[]">
+                        <label class="form-check-label" for="meditating">Meditating</label>
+                    </div>
+                    <div class="form-check col-md-3">
+                        <input class="form-check-input" type="checkbox" value="Movies/TV" id="moviesTV" name="interests[]">
                         <label class="form-check-label" for="moviesTV">Movies/TV</label>
+                    </div>
+                    <div class="form-check col-md-3">
+                        <input class="form-check-input" type="checkbox" value="Cooking" id="cooking" name="interests[]">
+                        <label class="form-check-label" for="cooking">Cooking</label>
+                    </div>
+                    <div class="form-check col-md-3">
+                        <input class="form-check-input" type="checkbox" value="Board Games" id="boardGames" name="interests[]">
+                        <label class="form-check-label" for="boardGames">Board Games</label>
+                    </div>
+                    <div class="form-check col-md-3">
+                        <input class="form-check-input" type="checkbox" value="Puzzles" id="puzzles" name="interests[]">
+                        <label class="form-check-label" for="puzzles">Puzzles</label>
+                    </div>
+                    <div class="form-check col-md-3">
+                        <input class="form-check-input" type="checkbox" value="Reading" id="reading" name="interests[]">
+                        <label class="form-check-label" for="reading">Reading</label>
+                    </div>
+                    <div class="form-check col-md-3">
+                        <input class="form-check-input" type="checkbox" value="Playing Cards" id="cards" name="interests[]">
+                        <label class="form-check-label" for="cards">Playing Cards</label>
+                    </div>
+                    <div class="form-check col-md-3">
+                        <input class="form-check-input" type="checkbox" value="Dancing" id="dancing" name="interests[]">
+                        <label class="form-check-label" for="dancing">Dancing</label>
+                    </div>
                 </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="cooking" id="cooking" name="indoor[]">
-                    <label class="form-check-label" for="cooking">Cooking</label>
-                </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="boardGames" id="boardGames" name="indoor[]">
-                    <label class="form-check-label" for="boardGames">Board Games</label>
-                </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="puzzles" id="puzzles" name="indoor[]">
-                    <label class="form-check-label" for="puzzles">Puzzles</label>
-                </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="reading" id="reading" name="indoor[]">
-                    <label class="form-check-label" for="reading">Reading</label>
-                </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="cards" id="cards" name="indoor[]">
-                    <label class="form-check-label" for="cards">Playing Cards</label>
-                </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="dancing" id="dancing" name="indoor[]">
-                    <label class="form-check-label" for="dancing">Dancing</label>
+                <!-- Outdoor Interests -->
+                <div class="form-group">
+                    <label class="col-lg-5 control-label" id="outdoorActs"><strong>Out-door Interests</strong></label>
+                    <div class="d-flex flex-wrap justify-content-evenly mb-3" id="outdoorChecks">
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="Hiking" id="hiking" name="interests[]">
+                            <label class="form-check-label" for="hiking">Hiking</label>
+                        </div>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="Biking" id="biking" name="interests[]">
+                            <label class="form-check-label" for="biking">Biking</label>
+                        </div>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="Swimming" id="swimming" name="interests[]">
+                            <label class="form-check-label" for="swimming">Swimming</label>
+                        </div>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="Running" id="running" name="interests[]">
+                            <label class="form-check-label" for="running">Running</label>
+                        </div>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="Sports" id="sports" name="interests[]">
+                            <label class="form-check-label" for="sports">Sports</label>
+                        </div>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="Foraging" id="foraging" name="interests[]">
+                            <label class="form-check-label" for="foraging">Foraging</label>
+                        </div>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="Climbing" id="climbing" name="interests[]">
+                            <label class="form-check-label" for="climbing">Climbing</label>
+                        </div>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="Gardening" id="gardening" name="interests[]">
+                            <label class="form-check-label" for="gardening">Gardening</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="form-group">
-            <label class="col-lg-5 control-label" id="outdoorActs"><strong>Out-door Interests</strong></label>
-            <div class="d-flex flex-wrap justify-content-evenly mb-3" id="outdoorChecks">
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="hiking" id="hiking" name="outdoor[]">
-                    <label class="form-check-label" for="hiking">Hiking</label>
-                </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="biking" id="biking" name="outdoor[]">
-                    <label class="form-check-label" for="biking">Biking</label>
-                </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="swimming" id="swimming" name="outdoor[]">
-                    <label class="form-check-label" for="swimming">Swimming</label>
-                </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="running" id="running" name="outdoor[]">
-                    <label class="form-check-label" for="running">Running</label>
-                </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="sports" id="sports" name="outdoor[]">
-                    <label class="form-check-label" for="sports">Sports</label>
-                </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="foraging" id="foraging" name="outdoor[]">
-                    <label class="form-check-label" for="foraging">Foraging</label>
-                </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="climbing" id="climbing" name="outdoor[]">
-                    <label class="form-check-label" for="climbing">Climbing</label>
-                </div>
-                <div class="form-check col-md-3">
-                    <input class="form-check-input" type="checkbox" value="gardening" id="gardening" name="outdoor[]">
-                    <label class="form-check-label" for="gardening">Gardening</label>
-                </div>
-
-            </div>
-        </div>
-            </div>
+            <!-- Right Side -->
             <div class="col-sm-12" id="right3">
-            <div id="buttonDiv">
-                <button class="btn btn-primary btn-lg float-right" type="submit">Next ></button>
+                <!-- Button -->
+                <div id="buttonDiv">
+                    <button class="btn btn-primary btn-lg float-right" type="submit">Next ></button>
+                </div>
             </div>
-
         </div>
-        </div>
-
     </form>
-
 </div>
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

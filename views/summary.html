@@ -1,6 +1,6 @@
 <!--Heather Monatt
-   January 27th, 2021
-   This is my home page-->
+   February 10th, 2021
+   This is my profile summary page - displays info entered from previous pages-->
 
 <!doctype html>
 <html lang="en">
@@ -16,7 +16,7 @@
 <body>
 <!-- navbar -->
 <nav class="navbar navbar-expand-lg navbar-light">
-    <h4><a class="navbar-brand" href="#">BOO'd UP<br><img src="images/ghostIcon.png" alt="ghost"></a></h4>
+    <h4><a class="navbar-brand" href="http://www.hmonatt.greenriverdev.com/328/dating/">BOO'd UP<br><img src="images/ghostIcon.png" alt="ghost"></a></h4>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -46,47 +46,44 @@
         </form>
     </div>
 </nav>
-<div class="container-fluid" id="main">
-    <div class="row">
-        <!-- left side -->
-        <div class="col-md-6" id="left">
-            <h3 class="display-1"><strong>BOO'd UP!</strong></h3>
-            <h5><strong>Fo Lyfe!</strong></h5>
-            <br>
-            <h4>Have you been <strong>GHOSTED</strong> too many times?! Do you find yourself askin',
-                "Where my <strong>BOO</strong> at?!" Are you ready to find the love of your life?!
-                Til death do you part?! Welcome to the best dating site of this lifetime!  This site is
-                for the ones who are tired of the games, and are ready to find their
-                eternal life partner! It's time to get...
-            </h4>
-            <br>
-            <h3><strong>BOO'd UP!</strong></h3>
-            <br>
-            <div>
-                <br>
-                <h5><strong>Hear How Others Found Their Ride Or Die!!</strong></h5>
-                <br>
-                <hr>
-                <!-- quotes -->
-                <blockquote id="testimonial1"><i>"I mean, BOO'd UP is where it's at, but you do you, BOO BOO! I ain't gonna listen to yo BOO-HOOin'!" ~ Michelle</i></blockquote>
-                <blockquote id="testimonial2"><i>"What it do, Baby BOO?! I found my BOO on BOO'd UP! Join! You won't regret it!" ~ Kyle</i></blockquote>
-                <blockquote id="testimonial3"><i>"It's spooky how easily we connected. Finally, someone who's a real one, and didn't ghost me!" ~ Janelle</i></blockquote>
-                <hr>
-            </div>
-            <!-- button -->
-            <div class="text-center">
-                <a class="btn btn-primary btn-lg" id="boofile" role="button" href="profile" >Create A BOOfile!</a>
-            </div>
-            <br>
+<div class="container mt-5 border border-3 border-light rounded">
+    <br>
+    <div class="row g-0">
+        <!-- Left Side -->
+        <div class="col-md-6" id="summaryList">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}</strong></li>
+                <li class="list-group-item"><strong>Gender: {{ @SESSION.genderRadios }}</strong></li>
+                <li class="list-group-item"><strong>Age: {{ @SESSION.age }}</strong></li>
+                <li class="list-group-item"><strong>Phone: {{ @SESSION.phone }}</strong></li>
+                <li class="list-group-item"><strong>Email: {{ @SESSION.email }}</strong></li>
+                <li class="list-group-item"><strong>State: {{ @SESSION.state }}</strong></li>
+                <li class="list-group-item"><strong>Seeking: {{ @SESSION.seekingRadios }}</strong></li>
+                <li class="list-group-item"><strong>Interests: {{ @SESSION.interests}}</strong></li>
+            </ul>
         </div>
-        <br><br>
-        <!-- right side -->
-        <div class="col-md-6" id="right">
-            <br><br><br>
-            <img class="d-flex align-self-end mr-3 img-fluid rounded" alt="boo" src="images/boos.jpg">
+        <!-- Right Side -->
+        <div class="col-md-6">
+            <!-- Profile Image -->
+            <img class="img-fluid mb-5 mx-auto d-none d-md-block rounded" src="images/ghostProfile.png" alt="ghostProfile">
+            <!-- Bio -->
+            <label id="bioLabel"><strong>Biography</strong></label>
+            <div id="bioBlurb" class="text-center">
+                <h6>{{ @SESSION.bio }}</h6>
+                <br>
+            </div>
         </div>
+        <br>
+        <br>
     </div>
+    <!-- Button -->
+    <div class="text-center">
+        <a class="btn btn-primary btn-lg">Contact Me!</a>
+    </div>
+    <br>
 </div>
+<br>
+<br>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

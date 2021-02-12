@@ -1,3 +1,7 @@
+<!--Heather Monatt
+   February 10th, 2021
+   This is my profile form 2 page - gathers email, state of user location, seeking, and bio-->
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -42,8 +46,9 @@
         </form>
     </div>
 </nav>
-<div class="container mt-5 border border-3 border-light">
+<div class="container mt-5 border border-3 border-light rounded">
     <br>
+    <!-- Profile -->
     <h1>Profile</h1>
     <hr>
     <form action="profile3" method="post">
@@ -116,29 +121,30 @@
                 <label id="seekingLabel"><strong>Seeking</strong></label><br>
                 <div id="radios">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="seekingRadios" id="male" value="male">
+                        <input class="form-check-input" type="radio" name="seekingRadios" id="male" value="Male">
                         <label class="form-check-label" for="male"><strong>Male</strong></label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="seekingRadios" id="female" value="female">
+                        <input class="form-check-input" type="radio" name="seekingRadios" id="female" value="Female">
                         <label class="form-check-label" for="female"><strong>Female</strong></label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="seekingRadios" id="anyone" value="anyone">
+                        <input class="form-check-input" type="radio" name="seekingRadios" id="anyone" value="Anyone">
                         <label class="form-check-label" for="anyone"><strong>Anyone</strong></label>
                     </div>
                 </div>
             </div>
             <!-- Right Side -->
             <div class="col-md-6" id="right2">
-                    <label for="bio"><strong>Biography</strong></label>
-                    <textarea class="form-control" id="bio" rows="6"></textarea>
+                <label for="bio"><strong>Biography</strong></label>
+                <textarea class="form-control" name="bio" id="bio" rows="6"></textarea>
                 <br>
                 <br>
             </div>
         </div>
+        <!-- Button -->
         <div id="buttonDiv">
-        <button class="btn btn-primary btn-lg float-right" type="submit">Next ></button>
+            <button class="btn btn-primary btn-lg float-right" type="submit">Next ></button>
         </div>
         <br>
     </form>
@@ -147,8 +153,6 @@
 <br>
 <br>
 <br>
-
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

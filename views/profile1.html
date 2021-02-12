@@ -1,3 +1,7 @@
+<!--Heather Monatt
+   February 10th, 2021
+   This is my profile form 1 page - gathers name, age, gender, & phone number -->
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -42,8 +46,9 @@
         </form>
     </div>
 </nav>
-<div class="container mt-5 border border-3 border-light">
+<div class="container mt-5 border border-3 border-light rounded">
     <br>
+    <!-- Personal Info -->
     <h1>Personal Information</h1>
     <hr>
     <form action="profile2" method="post">
@@ -68,18 +73,18 @@
                 <!-- Gender Radios -->
                 <label id="genderLabel"><strong>Gender</strong></label><br>
                 <div id="radios">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="genderRadios" id="male" value="male">
-                    <label class="form-check-label" for="male"><strong>Male</strong></label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="genderRadios" id="female" value="female">
-                    <label class="form-check-label" for="female"><strong>Female</strong></label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="genderRadios" id="non-binary" value="non-binary">
-                    <label class="form-check-label" for="non-binary"><strong>Non-Binary</strong></label>
-                </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genderRadios" id="male" value="Male">
+                        <label class="form-check-label" for="male"><strong>Male</strong></label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genderRadios" id="female" value="Female">
+                        <label class="form-check-label" for="female"><strong>Female</strong></label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genderRadios" id="non-binary" value="Non-Binary">
+                        <label class="form-check-label" for="non-binary"><strong>Non-Binary</strong></label>
+                    </div>
                 </div>
                 <br>
                 <!-- Phone Number -->
@@ -90,9 +95,10 @@
             </div>
             <!-- Right Side -->
             <div class="col-md-4" id="right">
+                <!-- Privacy Policy Note-->
                 <div class="card" >
                     <div class="card-body text-center">
-                        <p><strong>Note:</strong> All information entered in protected by our <a href>privacy policy</a>.
+                        <p><strong>Note:</strong> All information entered is protected by our <a href>privacy policy</a>.
                             Profile information can only be viewed by others with your permission.
                         </p>
                     </div>
@@ -101,8 +107,9 @@
                 <br>
             </div>
         </div>
+        <!-- Button -->
         <div id="buttonDiv">
-        <button class="btn btn-primary btn-lg float-right" type="submit">Next ></button>
+            <button class="btn btn-primary btn-lg float-right" type="submit">Next ></button>
         </div>
         <br>
     </form>
