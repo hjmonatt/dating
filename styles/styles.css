@@ -102,11 +102,13 @@ input{
 }
 
 #indoorActs{
-    padding-left: 20px;
+    padding-top: 20px;
+    padding-left: 30px;
 }
 
 #outdoorActs{
-    padding-left: 20px;
+    padding-top: 20px;
+    padding-left: 30px;
 }
 
 /* Testimonials - Blockquotes */
@@ -153,9 +155,14 @@ hr{
 
 }
 
+#right3{
+    padding-right: 20px;
+    padding-bottom: 30px;
+}
+
 /* Button Div */
 #buttonDiv{
-    padding-right: 20px;
+    padding-right: 10px;
 }
 
 @media only screen and (max-width: 768px) {
