@@ -27,11 +27,21 @@ $f3->route('GET /', function() {
 });
 
 //Define a personal profile route
-$f3->route('GET /profile', function() {
+$f3->route('GET|POST /profile', function() {
 
     //echo "Profile 1";
     $view = new Template();
     echo $view->render('views/profile1.html');
+});
+
+//Define a profile2 route
+$f3->route('GET|POST /profile2', function() {
+
+    //display a view
+    //echo "Profile 2 Route";
+    $view = new Template();
+    echo $view->render('views/profile2.html');
+
 });
 
 
