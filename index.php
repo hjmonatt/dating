@@ -110,7 +110,7 @@ $f3->route('POST /summary', function() {
     echo $view->render('views/summary.html');
 
     //Clear the SESSION array
-    //session_destroy();
+    session_destroy();
 
 });
 
