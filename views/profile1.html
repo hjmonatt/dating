@@ -52,21 +52,21 @@
             <div class="col-md-8" id="left">
                 <!-- First Name -->
                 <div class="form-group">
-                    <label for="firstName"><strong>First Name</strong></label>
+                    <label for="firstName" id="fnameLabel"><strong>First Name</strong></label>
                     <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Sarah">
                 </div>
                 <!-- Last Name -->
                 <div class="form-group">
-                    <label for="lastName"><strong>Last Name</strong></label>
+                    <label for="lastName" id="lnameLabel"><strong>Last Name</strong></label>
                     <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Smith">
                 </div>
                 <!-- Age -->
                 <div class="form-group">
-                    <label for="age"><strong>Age</strong></label>
+                    <label for="age" id="ageLabel"><strong>Age</strong></label>
                     <input type="text" class="form-control" id="age" name="age" placeholder="30">
                 </div>
                 <!-- Gender Radios -->
-                <label><strong>Gender</strong></label><br>
+                <label id="genderLabel"><strong>Gender</strong></label><br>
                 <div id="radios">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="genderRadios" id="male" value="male">
@@ -84,7 +84,7 @@
                 <br>
                 <!-- Phone Number -->
                 <div class="form-group">
-                    <label for="phone"><strong>Phone Number</strong></label>
+                    <label for="phone" id="phoneLabel"><strong>Phone Number</strong></label>
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="555-867-5309">
                 </div>
             </div>
@@ -101,7 +101,9 @@
                 <br>
             </div>
         </div>
+        <div id="buttonDiv">
         <button class="btn btn-primary btn-lg float-right" type="submit">Next ></button>
+        </div>
         <br>
     </form>
     <br><br>

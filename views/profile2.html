@@ -52,13 +52,12 @@
             <div class="col-md-6" id="left2">
                 <!-- Email -->
                 <div class="form-group">
-                    <label for="email"><strong>Email</strong></label>
+                    <label for="email" id="emailLabel"><strong>Email</strong></label>
                     <input type="text" class="form-control" id="email" name="email" placeholder="my_email@gmail.com">
                 </div>
                 <!-- State -->
-                <label for="state"><strong>State</strong></label>
-                <div id="stateSelect">
-                <div class="form-group input-group mb-3">
+                <label for="state" id="stateLabel"><strong>State</strong></label>
+                <div class="form-group input-group mb-3" id="stateSelect">
                     <select name="state" size="1" class="custom-select" id="state">
                         <option selected value="">Please select your state...</option>
                         <option value="Alabama">Alabama</option>
@@ -113,9 +112,8 @@
                         <option value="Wyoming">Wyoming</option>
                     </select>
                 </div>
-                </div>
                 <!-- Seeking Radios -->
-                <label><strong>Seeking</strong></label><br>
+                <label id="seekingLabel"><strong>Seeking</strong></label><br>
                 <div id="radios">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="seekingRadios" id="male" value="male">
@@ -139,7 +137,9 @@
                 <br>
             </div>
         </div>
+        <div id="buttonDiv">
         <button class="btn btn-primary btn-lg float-right" type="submit">Next ></button>
+        </div>
         <br>
     </form>
     <br><br>

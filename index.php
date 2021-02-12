@@ -44,6 +44,16 @@ $f3->route('GET|POST /profile2', function() {
 
 });
 
+//Define a profile3 route
+$f3->route('GET|POST /profile3', function() {
+
+    //display a view
+    //echo "Profile 3 Route";
+    $view = new Template();
+    echo $view->render('views/profile3.html');
+
+});
+
 
 //Run fat free
 $f3->run();
