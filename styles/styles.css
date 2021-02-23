@@ -71,6 +71,12 @@ h6{
     color: red;
 }
 
+/* Error messages */
+span{
+    color: red;
+    margin-left: 20px;
+}
+
 /* Labels */
 label{
     color: deeppink;
@@ -80,6 +86,10 @@ label{
 /* Input positioning */
 input{
     margin-left: 20px;
+}
+
+#error{
+    color: red;
 }
 
 /* Summary List */

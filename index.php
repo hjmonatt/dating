@@ -15,6 +15,7 @@ session_start();
 
 //Require the autoload file
 require_once('vendor/autoload.php');
+require_once ('model/validate.php');
 
 //Create an instance of the Base class
 $f3 = Base::instance();
@@ -28,8 +29,38 @@ $f3->route('GET /', function() {
 });
 
 //Define a personal profile route
-$f3->route('GET|POST /profile', function() {
+$f3->route('GET|POST /profile', function($f3) {
 
+    //if the form has been submitted
+    if ($_SERVER['REQUEST_METHOD']=='POST'){
+        //first name validation
+        if(validFirstName($_POST['firstName'])) {
+            $_SESSION['firstName'] = $_POST['firstName'];
+        }
+        else {
+            $f3->set('errors["firstName"]', "First name cannot be blank and must be alphabetical");
+        }
+        //last name validation
+        if(validLastName($_POST['lastName'])) {
+            $_SESSION['lastName'] = $_POST['lastName'];
+        }
+        else {
+            $f3->set('errors["lastName"]', "Last name cannot be blank and must be alphabetical");
+        }
+        //age validation
+        if(validAge($_POST['age'])) {
+            $_SESSION['age'] = $_POST['age'];
+        }
+        else {
+            $f3->set('errors["age"]', "Age must be numeric and between 18 and 118");
+        }
+
+
+        //if there are no erros, redirect to /profile2
+        if(empty($f3->get('errors'))) {
+            $f3->reroute('/profile2');
+        }
+    }
     //echo "Profile 1";
     $view = new Template();
     echo $view->render('views/profile1.html');

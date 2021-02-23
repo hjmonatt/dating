@@ -51,7 +51,7 @@
     <!-- Personal Info -->
     <h1>Personal Information</h1>
     <hr>
-    <form action="profile2" method="post">
+    <form action="#" method="post">
         <div class="row g-0">
             <!-- Left Side -->
             <div class="col-md-8" id="left">
@@ -59,16 +59,25 @@
                 <div class="form-group">
                     <label for="firstName" id="fnameLabel"><strong>First Name</strong></label>
                     <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Sarah">
+                    <check if="{{ isset(@errors['firstName']) }}">
+                        <span>{{ @errors['firstName'] }}</span>
+                    </check>
                 </div>
                 <!-- Last Name -->
                 <div class="form-group">
                     <label for="lastName" id="lnameLabel"><strong>Last Name</strong></label>
                     <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Smith">
+                    <check if="{{ isset(@errors['lastName']) }}">
+                        <span>{{ @errors['lastName'] }}</span>
+                    </check>
                 </div>
                 <!-- Age -->
                 <div class="form-group">
                     <label for="age" id="ageLabel"><strong>Age</strong></label>
                     <input type="text" class="form-control" id="age" name="age" placeholder="30">
+                    <check if="{{ isset(@errors['age']) }}">
+                        <span>{{ @errors['age'] }}</span>
+                    </check>
                 </div>
                 <!-- Gender Radios -->
                 <label id="genderLabel"><strong>Gender</strong></label><br>
