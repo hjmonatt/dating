@@ -8,14 +8,33 @@
  */
 
 /**
- * getInterests() - returns an array of interests
+ * getIndoor() - returns an array of indoor interests
  * @return - string[]
  */
-function getInterests()
+function getIndoor()
 {
     return array("Meditating", "Movies/TV", "Cooking", "Board Games", "Puzzles", "Reading",
-        "Playing Cards", "Dancing", "Hiking", "Biking", "Swimming", "Running", "Sports", "Foraging",
+        "Playing Cards", "Dancing");
+}
+
+/**
+ * getOutdoor() - returns an array of outdoor interests
+ * @return - string[]
+ */
+function getOutdoor()
+{
+    return array("Hiking", "Biking", "Swimming", "Running", "Sports", "Foraging",
         "Climbing", "Gardening");
+
+}
+
+/**
+ * getGender() - returns an array of genders
+ * @return - string[]
+ */
+function getGender()
+{
+    return array("Male", "Female", "Non-Binary");
 
 }
 

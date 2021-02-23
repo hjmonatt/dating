@@ -30,3 +30,19 @@ function validAge($age)
 {
     return !empty(is_numeric($age)) && $age >= 18 && $age <= 118;
 }
+
+/**
+ * validPhone() checks to see that a phone number is valid
+ */
+function validPhone($phone)
+{
+    return !empty(preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phone));
+}
+
+/**
+ * validEmail() checks to see that an email address is valid
+ */
+function validEmail($email)
+{
+    return !empty(filter_var($email, FILTER_VALIDATE_EMAIL));
+}
