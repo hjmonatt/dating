@@ -46,3 +46,32 @@ function validEmail($email)
 {
     return !empty(filter_var($email, FILTER_VALIDATE_EMAIL));
 }
+
+/**
+ * validIndoor() checks each selected indoor interest against a list of valid options
+ */
+function validIndoor($selectedIndoor)
+{
+    $validIndoorActs = getIndoor();
+    foreach($selectedIndoor as $selected){
+        if(!in_array($selected, $validIndoorActs)){
+            return false;
+        }
+    }
+    return true;
+}
+
+/**
+ * validIndoor() checks each selected indoor interest against a list of valid options
+ */
+function validOutdoor($selectedOutdoor)
+{
+    $validOutdoorActs = getOutdoor();
+    foreach($selectedOutdoor as $selected){
+        if(!in_array($selected, $validOutdoorActs)){
+            return false;
+        }
+    }
+    return true;
+
+}

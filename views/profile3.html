@@ -51,81 +51,37 @@
     <!-- Interests -->
     <h1>Interests</h1>
     <hr>
-    <form action="summary" method="post">
+    <form action="#" method="post">
         <div class="row g-0">
             <!-- Indoor Interests -->
             <div class="form-group">
                 <label class="col-lg-5 control-label" id="indoorActs"><strong>In-door Interests</strong></label>
                 <div class="d-flex flex-wrap justify-content-center mb-3" id="indoorChecks">
-                    <div class="form-check col-md-3">
-                        <input class="form-check-input" type="checkbox" value="Meditating" id="meditating" name="interests[]">
-                        <label class="form-check-label" for="meditating">Meditating</label>
-                    </div>
-                    <div class="form-check col-md-3">
-                        <input class="form-check-input" type="checkbox" value="Movies/TV" id="moviesTV" name="interests[]">
-                        <label class="form-check-label" for="moviesTV">Movies/TV</label>
-                    </div>
-                    <div class="form-check col-md-3">
-                        <input class="form-check-input" type="checkbox" value="Cooking" id="cooking" name="interests[]">
-                        <label class="form-check-label" for="cooking">Cooking</label>
-                    </div>
-                    <div class="form-check col-md-3">
-                        <input class="form-check-input" type="checkbox" value="Board Games" id="boardGames" name="interests[]">
-                        <label class="form-check-label" for="boardGames">Board Games</label>
-                    </div>
-                    <div class="form-check col-md-3">
-                        <input class="form-check-input" type="checkbox" value="Puzzles" id="puzzles" name="interests[]">
-                        <label class="form-check-label" for="puzzles">Puzzles</label>
-                    </div>
-                    <div class="form-check col-md-3">
-                        <input class="form-check-input" type="checkbox" value="Reading" id="reading" name="interests[]">
-                        <label class="form-check-label" for="reading">Reading</label>
-                    </div>
-                    <div class="form-check col-md-3">
-                        <input class="form-check-input" type="checkbox" value="Playing Cards" id="cards" name="interests[]">
-                        <label class="form-check-label" for="cards">Playing Cards</label>
-                    </div>
-                    <div class="form-check col-md-3">
-                        <input class="form-check-input" type="checkbox" value="Dancing" id="dancing" name="interests[]">
-                        <label class="form-check-label" for="dancing">Dancing</label>
-                    </div>
+                    <!-- Indoor-->
+                    <check if="{{ @errors['indoor'] }}">{{ @errors['indoor'] }}</check>
+                    <repeat group="{{ @indoors }}" value="{{ @indoor }}">
+                        <div class="form-check col-md-3">
+                        <label><input type="checkbox"
+                                      name="indoor[]"
+                                      id="{{ @indoor }}"
+                                      value="{{ @indoor }}"> {{ ucfirst(@indoor) }}</label><br>
+                        </div>
+                    </repeat>
                 </div>
                 <!-- Outdoor Interests -->
                 <div class="form-group">
                     <label class="col-lg-5 control-label" id="outdoorActs"><strong>Out-door Interests</strong></label>
                     <div class="d-flex flex-wrap justify-content-evenly mb-3" id="outdoorChecks">
-                        <div class="form-check col-md-3">
-                            <input class="form-check-input" type="checkbox" value="Hiking" id="hiking" name="interests[]">
-                            <label class="form-check-label" for="hiking">Hiking</label>
-                        </div>
-                        <div class="form-check col-md-3">
-                            <input class="form-check-input" type="checkbox" value="Biking" id="biking" name="interests[]">
-                            <label class="form-check-label" for="biking">Biking</label>
-                        </div>
-                        <div class="form-check col-md-3">
-                            <input class="form-check-input" type="checkbox" value="Swimming" id="swimming" name="interests[]">
-                            <label class="form-check-label" for="swimming">Swimming</label>
-                        </div>
-                        <div class="form-check col-md-3">
-                            <input class="form-check-input" type="checkbox" value="Running" id="running" name="interests[]">
-                            <label class="form-check-label" for="running">Running</label>
-                        </div>
-                        <div class="form-check col-md-3">
-                            <input class="form-check-input" type="checkbox" value="Sports" id="sports" name="interests[]">
-                            <label class="form-check-label" for="sports">Sports</label>
-                        </div>
-                        <div class="form-check col-md-3">
-                            <input class="form-check-input" type="checkbox" value="Foraging" id="foraging" name="interests[]">
-                            <label class="form-check-label" for="foraging">Foraging</label>
-                        </div>
-                        <div class="form-check col-md-3">
-                            <input class="form-check-input" type="checkbox" value="Climbing" id="climbing" name="interests[]">
-                            <label class="form-check-label" for="climbing">Climbing</label>
-                        </div>
-                        <div class="form-check col-md-3">
-                            <input class="form-check-input" type="checkbox" value="Gardening" id="gardening" name="interests[]">
-                            <label class="form-check-label" for="gardening">Gardening</label>
-                        </div>
+                        <!-- Outdoor-->
+                        <check if="{{ @errors['outdoor'] }}">{{ @errors['outdoor'] }}</check>
+                        <repeat group="{{ @outdoors }}" value="{{ @outdoor }}">
+                            <div class="form-check col-md-3">
+                                <label><input type="checkbox"
+                                              name="outdoor[]"
+                                              id="{{ @outdoor }}"
+                                              value="{{ @outdoor }}"> {{ ucfirst(@outdoor) }}</label><br>
+                            </div>
+                        </repeat>
                     </div>
                 </div>
             </div>
