@@ -28,15 +28,15 @@ function getOutdoor()
 
 }
 
-///**
-// * getGender() - returns an array of genders
-// * @return - string[]
-// */
-//function getGender()
-//{
-//    return array("Male", "Female", "Non-Binary");
-//
-//}
+/**
+ * getGender() - returns an array of genders
+ * @return - string[]
+ */
+function getGender()
+{
+    return array("Male", "Female", "Non-Binary");
+
+}
 
 /**
  * getSeeking() - returns an array of genders

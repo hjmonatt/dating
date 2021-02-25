@@ -40,7 +40,7 @@ $f3->route('GET|POST /profile', function($f3) {
         $userLName = trim($_POST['lastName']);
         $userAge = trim($_POST['age']);
         $userPhone = trim($_POST['phone']);
-        $userGender = $_POST['genderRadios'];
+        $userGender = $_POST['genderRadio'];
 
         //if the data is valid --> store in session
         if(validFirstName($userFName)) {
@@ -78,7 +78,7 @@ $f3->route('GET|POST /profile', function($f3) {
         //add data from profile1 to session array
         //gender
         if(isset($userGender)){
-            $_SESSION['genderRadios'] = $userGender;
+            $_SESSION['genderRadio'] = $userGender;
         }
 
         //if there are no errors, redirect to /profile2
@@ -91,7 +91,7 @@ $f3->route('GET|POST /profile', function($f3) {
     $f3->set('userLName', isset($userLName) ? $userLName : "");
     $f3->set('userAge', isset($userAge) ? $userAge : "");
     $f3->set('userPhone', isset($userPhone) ? $userPhone : "");
-    //$f3->set('userGender', getGender());
+    $f3->set('genderRadios', getGender());
 
     //echo "Profile 1";
     $view = new Template();
