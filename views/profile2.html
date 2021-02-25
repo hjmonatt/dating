@@ -58,7 +58,7 @@
                 <!-- Email -->
                 <div class="form-group">
                     <label for="email" id="emailLabel"><strong>Email</strong></label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="my_email@gmail.com">
+                    <input type="text" class="form-control" id="email" name="email" value="{{ @userEmail }}" placeholder="my_email@gmail.com">
                     <check if="{{ isset(@errors['email']) }}">
                         <span>{{ @errors['email'] }}</span>
                     </check>
@@ -67,7 +67,7 @@
                 <label for="state" id="stateLabel"><strong>State</strong></label>
                 <div class="form-group input-group mb-3" id="stateSelect">
                     <select name="state" size="1" class="custom-select" id="state">
-                        <option selected value="">Please select your state...</option>
+                        <option selected value="">Please Select A State...</option>
                         <option value="Alabama">Alabama</option>
                         <option value="Alaska">Alaska</option>
                         <option value="Arizona">Arizona</option>
@@ -140,7 +140,7 @@
             <!-- Right Side -->
             <div class="col-md-6" id="right2">
                 <label for="bio"><strong>Biography</strong></label>
-                <textarea class="form-control" name="bio" id="bio" rows="6"></textarea>
+                <textarea class="form-control" name="bio" id="bio" rows="6">{{ @userBio }}</textarea>
                 <br>
                 <br>
             </div>

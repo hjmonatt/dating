@@ -36,39 +36,39 @@ $f3->route('GET|POST /profile', function($f3) {
     if ($_SERVER['REQUEST_METHOD']=='POST'){
 
         //get the data from the post array
-        $fName = trim($_POST['firstName']);
-        $lName = trim($_POST['lastName']);
-        $age = trim($_POST['age']);
-        $phone = trim($_POST['phone']);
-        $gender = $_POST['genderRadios'];
+        $userFName = trim($_POST['firstName']);
+        $userLName = trim($_POST['lastName']);
+        $userAge = trim($_POST['age']);
+        $userPhone = trim($_POST['phone']);
+        $userGender = $_POST['genderRadios'];
 
         //if the data is valid --> store in session
-        if(validFirstName($fName)) {
-            $_SESSION['firstName'] = $fName;
+        if(validFirstName($userFName)) {
+            $_SESSION['firstName'] = $userFName;
         }
         //data is not valid -> set an error in F3 hive
         else {
             $f3->set('errors["firstName"]', "First name cannot be blank and must be alphabetical");
         }
         //if the data is valid --> store in session
-        if(validLastName($lName)){
-            $_SESSION['lastName'] = $lName;
+        if(validLastName($userLName)){
+            $_SESSION['lastName'] = $userLName;
         }
         //data is not valid -> set an error in F3 hive
         else {
             $f3->set('errors["lastName"]', "Last name cannot be blank and must be alphabetical");
         }
         //if the data is valid --> store in session
-        if(validAge($age)) {
-            $_SESSION['age'] = $age;
+        if(validAge($userAge)) {
+            $_SESSION['age'] = $userAge;
         }
         //data is not valid -> set an error in F3 hive
         else {
             $f3->set('errors["age"]', "Age must be numeric and between 18 and 118");
         }
         //if the data is valid --> store in session
-        if(validPhone($phone)) {
-            $_SESSION['phone'] = $phone;
+        if(validPhone($userPhone)) {
+            $_SESSION['phone'] = $userPhone;
         }
         //data is not valid -> set an error in F3 hive
         else {
@@ -77,8 +77,8 @@ $f3->route('GET|POST /profile', function($f3) {
 
         //add data from profile1 to session array
         //gender
-        if(isset($gender)){
-            $_SESSION['genderRadios'] = $gender;
+        if(isset($userGender)){
+            $_SESSION['genderRadios'] = $userGender;
         }
 
         //if there are no errors, redirect to /profile2
@@ -87,11 +87,11 @@ $f3->route('GET|POST /profile', function($f3) {
         }
     }
 
-    $f3->set('fname', isset($fName) ? $fName : "");
-    $f3->set('lname', isset($lName) ? $lName : "");
-    $f3->set('age', isset($age) ? $age : "");
-    $f3->set('phone', isset($phone) ? $phone : "");
-    $f3->set('gender', getGender());
+    $f3->set('userFName', isset($userFName) ? $userFName : "");
+    $f3->set('userLName', isset($userLName) ? $userLName : "");
+    $f3->set('userAge', isset($userAge) ? $userAge : "");
+    $f3->set('userPhone', isset($userPhone) ? $userPhone : "");
+    //$f3->set('userGender', getGender());
 
     //echo "Profile 1";
     $view = new Template();
@@ -106,29 +106,32 @@ $f3->route('GET|POST /profile2', function($f3) {
     //if the form has been submitted
     if ($_SERVER['REQUEST_METHOD']=='POST') {
 
-        $email = trim($_POST['email']);
-        $state = $_POST['state'];
-        $seeking = $_POST['seekingRadios'];
-        $bio = trim($_POST['bio']);
+        $userEmail = trim($_POST['email']);
+        $userState = $_POST['state'];
+        $userSeeking = $_POST['seekingRadios'];
+        $userBio = $_POST['bio'];
 
         //email address validation
-        if (validEmail($email)) {
-            $_SESSION['email'] = $email;
+        if (validEmail($userEmail)) {
+            $_SESSION['email'] = $userEmail;
         } else {
             $f3->set('errors["email"]', "Invalid email format");
         }
         //add data from profile2 to session array
         //state
-        if(isset($state)){
-            $_SESSION['state'] = $state;
+        if(isset($userState)){
+            $_SESSION['state'] = $userState;
         }
-        //seeking option
-        if(isset($seeking)){
-            $_SESSION['seekingRadios'] = $seeking;
+
+        //get data from profile 3 to session array
+        if (isset($_POST['seekingRadios'])) {
+            $_SESSION['seekingRadios'] = $userSeeking;
         }
-        //bio
-        if(isset($bio)){
-            $_SESSION['bio'] = $bio;
+
+        //get data from profile 3 to session array
+        if (isset($userBio)) {
+            $_SESSION['bio'] = $userBio;
+
         }
         //if there are no errors, redirect to /profile3
         if(empty($f3->get('errors'))) {
@@ -136,10 +139,10 @@ $f3->route('GET|POST /profile2', function($f3) {
         }
     }
 
-    $f3->set('email', isset($email) ? $email : "");
-    $f3->set('state', isset($state) ? $state : "");
-    $f3->set('seeking', isset($seeking) ? $seeking : "");
-    $f3->set('bio', isset($bio) ? $bio : "");
+    $f3->set('userEmail', isset($userEmail) ? $userEmail : "");
+    $f3->set('userState', isset($userState) ? $userState : "");
+    //$f3->set('userSeeking', getSeeking());
+    $f3->set('userBio', isset($userBio) ? $userBio : "");
 
     //display a view
     //echo "Profile 2 Route";

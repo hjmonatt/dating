@@ -75,3 +75,17 @@ function validOutdoor($selectedOutdoor)
     return true;
 
 }
+
+/**
+ * validIndoor() checks each selected indoor interest against a list of valid options
+ */
+function validSeeking($selectedSeeking)
+{
+    $validUserSeeking = getSeeking();
+    foreach($selectedSeeking as $selected){
+        if(!in_array($selected, $validUserSeeking)){
+            return false;
+        }
+    }
+    return true;
+}
