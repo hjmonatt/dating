@@ -110,7 +110,7 @@ $f3->route('GET|POST /profile2', function($f3) {
 
         $userEmail = trim($_POST['email']);
         $userState = $_POST['state'];
-        $userSeeking = $_POST['seekingRadios'];
+        $userSeeking = $_POST['seekingRadio'];
         $userBio = $_POST['bio'];
 
         //email address validation
@@ -126,8 +126,16 @@ $f3->route('GET|POST /profile2', function($f3) {
         }
 
         //get data from profile 3 to session array
-        if (isset($_POST['seekingRadios'])) {
-            $_SESSION['seekingRadios'] = $userSeeking;
+//        if (isset($_POST['seekingRadios'])) {
+//            $_SESSION['seekingRadios'] = $userSeeking;
+//        }
+        //add data from profile1 to session array
+        //gender
+        if(validSeeking($userSeeking)){
+            $_SESSION['seekingRadio'] = $userSeeking;
+        }
+        else {
+            $f3->set('errors[seekingRadio]', "Go away Evildoer!");
         }
 
         //get data from profile 3 to session array
@@ -143,7 +151,7 @@ $f3->route('GET|POST /profile2', function($f3) {
 
     $f3->set('userEmail', isset($userEmail) ? $userEmail : "");
     $f3->set('userState', isset($userState) ? $userState : "");
-    //$f3->set('userSeeking', getSeeking());
+    $f3->set('seekingRadios', getSeeking());
     $f3->set('userBio', isset($userBio) ? $userBio : "");
 
     //display a view

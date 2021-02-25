@@ -77,21 +77,16 @@ function validOutdoor($selectedOutdoor)
 }
 
 /**
- * validIndoor() checks each selected indoor interest against a list of valid options
+ * validSeeking() checks selected seeking gender against a list of valid options
  */
 function validSeeking($selectedSeeking)
 {
     $validUserSeeking = getSeeking();
-    foreach($selectedSeeking as $selected){
-        if(!in_array($selected, $validUserSeeking)){
-            return false;
-        }
-    }
-    return true;
+    return in_array($selectedSeeking, $validUserSeeking);
 }
 
 /**
- * validGender() checks each selected indoor interest against a list of valid options
+ * validGender() checks each selected gender against a list of valid options
  */
 function validGender($selectedGender)
 {

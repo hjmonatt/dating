@@ -121,8 +121,9 @@
                     </select>
                 </div>
                 <!-- Seeking Radios -->
-                <label id="seekingLabel"><strong>Seeking</strong></label><br>
-                <div id="radios">
+
+
+                    <!--
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="seekingRadios" id="male" value="Male">
                         <label class="form-check-label" for="male"><strong>Male</strong></label>
@@ -134,9 +135,19 @@
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="seekingRadios" id="anyone" value="Anyone">
                         <label class="form-check-label" for="anyone"><strong>Anyone</strong></label>
-                    </div>
+                    </div>-->
 
-                </div>
+                <label id="seekingLabel"><strong>Seeking</strong></label><br>
+                    <repeat group="{{ @seekingRadios }}" value="{{ @seekingRadio }}">
+                        <div class="form-check form-check-inline" id="radios">
+                            <label><input type="radio"
+                                          name="seekingRadio"
+                                          id="{{ @seekingRadio }}"
+                                          value="{{ @seekingRadio }}"> {{ ucfirst(@seekingRadio) }}
+                                </input></label><br>
+                        </div>
+                    </repeat>
+
             </div>
             <!-- Right Side -->
             <div class="col-md-6" id="right2">
