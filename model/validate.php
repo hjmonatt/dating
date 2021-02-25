@@ -89,3 +89,12 @@ function validSeeking($selectedSeeking)
     }
     return true;
 }
+
+/**
+ * validGender() checks each selected indoor interest against a list of valid options
+ */
+function validGender($selectedGender)
+{
+    $validUserGender = getGender();
+    return in_array($selectedGender, $validUserGender);
+}

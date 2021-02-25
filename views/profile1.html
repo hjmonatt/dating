@@ -80,36 +80,17 @@
                     </check>
                 </div>
                 <!-- Gender Radios -->
-
                 <label id="genderLabel"><strong>Gender</strong></label><br>
-                <div id="radios">
-                    <!--
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genderRadio" id="male" value="Male">
-                        <label class="form-check-label" for="male"><strong>Male</strong></label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genderRadio" id="female" value="Female">
-                        <label class="form-check-label" for="female"><strong>Female</strong></label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genderRadio" id="non-binary" value="Non-Binary">
-                        <label class="form-check-label" for="non-binary"><strong>Non-Binary</strong></label>
-                    </div>
-                    -->
                     <repeat group="{{ @genderRadios }}" value="{{ @genderRadio }}">
-                        <div class="form-check form-check-inline">
-                               <input type="radio"
+                        <div class="form-check form-check-inline" id="radios">
+                               <label><input type="radio"
                                       name="genderRadio"
                                       id="{{ @genderRadio }}"
                                       value="{{ @genderRadio }}"> {{ ucfirst(@genderRadio) }}
                                </input></label><br>
                         </div>
                     </repeat>
-                <check if="{{ isset(@errors['genderRadio']) }}">
-                    {{ @errors['genderRadio'] }}
-                </check>
-                </div>
+                <br>
                 <br>
                 <!-- Phone Number -->
                 <div class="form-group">

@@ -5,7 +5,6 @@
 //February 10th, 2021 - updated
 //This is my CONTROLLER
 
-
 //Turn on error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -77,8 +76,11 @@ $f3->route('GET|POST /profile', function($f3) {
 
         //add data from profile1 to session array
         //gender
-        if(isset($userGender)){
+        if(validGender($userGender)){
             $_SESSION['genderRadio'] = $userGender;
+        }
+        else {
+            $f3->set('errors[genderRadio]', "Go away Evildoer!");
         }
 
         //if there are no errors, redirect to /profile2
