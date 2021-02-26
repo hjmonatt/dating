@@ -93,3 +93,12 @@ function validGender($selectedGender)
     $validUserGender = getGender();
     return in_array($selectedGender, $validUserGender);
 }
+
+/**
+ * validState() checks each selected state against a list of valid options
+ */
+function validState($selectedState)
+{
+    $validUserState = getState();
+    return in_array($selectedState, $validUserState);
+}

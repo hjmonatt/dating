@@ -148,9 +148,13 @@ $f3->route('GET|POST /profile2', function($f3) {
     }
 
     $f3->set('userEmail', isset($userEmail) ? $userEmail : "");
-    $f3->set('userState', isset($userState) ? $userState : "");
+
+    $f3->set('states', getState());
+    $f3->set('selectedState', $_POST['state']);
+
     $f3->set('seekingRadios', getSeeking());
     $f3->set('selectedSeeking', $_POST['seekingRadio']);
+
     $f3->set('userBio', isset($userBio) ? $userBio : "");
 
     //display a view
