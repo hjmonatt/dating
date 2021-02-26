@@ -126,13 +126,19 @@ $f3->route('GET|POST /profile2', function($f3) {
             $_SESSION['state'] = $userState;
         }
 
+        if (validState($userState)) {
+            $_SESSION['state'] = $userState;
+        } else {
+            $f3->set('errors["state"]', "Go away Evildoer!");
+        }
+
 
         //add data from profile1 to session array
         //gender
         if (validSeeking($userSeeking)) {
             $_SESSION['seekingRadio'] = $userSeeking;
         } else {
-            $f3->set('errors[seekingRadio]', "Go away Evildoer!");
+            $f3->set('errors["seekingRadio"]', "Go away Evildoer!");
         }
 
 
@@ -151,6 +157,7 @@ $f3->route('GET|POST /profile2', function($f3) {
 
     $f3->set('states', getState());
     $f3->set('selectedState', $_POST['state']);
+    //$f3->set('userState', isset($userState) ? $userState : "");
 
     $f3->set('seekingRadios', getSeeking());
     $f3->set('selectedSeeking', $_POST['seekingRadio']);

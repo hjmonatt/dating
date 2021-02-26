@@ -65,7 +65,7 @@
                 </div>
                 <!-- State -->
                 <label for="state" id="stateLabel"><strong>State</strong></label>
-                <div class="form-group input-group mb-3" id="stateSelect">
+               <div class="form-group input-group mb-3" id="stateSelect">
                    <select name="state" size="1" class="custom-select" id="state">
                         <option selected value="">{{ @selectedState }}</option>
                         <option value="Alabama">Alabama</option>
@@ -118,6 +118,10 @@
                         <option value="West Virginia">West Virginia</option>
                         <option value="Wisconsin">Wisconsin</option>
                         <option value="Wyoming">Wyoming</option>
+                       <check if="{{ @state == @selectedState }}">
+                           selected
+                       </check>
+
                    </select>
                 </div>
                 <!-- Seeking Radios -->
@@ -135,7 +139,6 @@
                                 </input></label><br>
                         </div>
                     </repeat>
-
             </div>
             <!-- Right Side -->
             <div class="col-md-6" id="right2">
