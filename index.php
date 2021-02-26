@@ -94,6 +94,7 @@ $f3->route('GET|POST /profile', function($f3) {
     $f3->set('userAge', isset($userAge) ? $userAge : "");
     $f3->set('userPhone', isset($userPhone) ? $userPhone : "");
     $f3->set('genderRadios', getGender());
+    $f3->set('selectedGender', $_POST['genderRadio']);
 
     //echo "Profile 1";
     $view = new Template();
@@ -125,18 +126,15 @@ $f3->route('GET|POST /profile2', function($f3) {
             $_SESSION['state'] = $userState;
         }
 
-        //get data from profile 3 to session array
-//        if (isset($_POST['seekingRadios'])) {
-//            $_SESSION['seekingRadios'] = $userSeeking;
-//        }
+
         //add data from profile1 to session array
         //gender
-        if(validSeeking($userSeeking)){
+        if (validSeeking($userSeeking)) {
             $_SESSION['seekingRadio'] = $userSeeking;
-        }
-        else {
+        } else {
             $f3->set('errors[seekingRadio]', "Go away Evildoer!");
         }
+
 
         //get data from profile 3 to session array
         if (isset($userBio)) {
@@ -152,6 +150,7 @@ $f3->route('GET|POST /profile2', function($f3) {
     $f3->set('userEmail', isset($userEmail) ? $userEmail : "");
     $f3->set('userState', isset($userState) ? $userState : "");
     $f3->set('seekingRadios', getSeeking());
+    $f3->set('selectedSeeking', $_POST['seekingRadio']);
     $f3->set('userBio', isset($userBio) ? $userBio : "");
 
     //display a view

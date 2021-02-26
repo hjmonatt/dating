@@ -86,7 +86,11 @@
                                <label><input type="radio"
                                              name="genderRadio"
                                              id="{{ @genderRadio }}"
-                                             value="{{ @genderRadio }}"> {{ ucfirst(@genderRadio) }}
+                                             value="{{ @genderRadio }}"
+                                   <check if="{{ @genderRadio == @selectedGender }}">
+                                       checked="checked"
+                                   </check>
+                               > {{ ucfirst(@genderRadio) }}
                                </input></label><br>
                         </div>
                     </repeat>

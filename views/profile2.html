@@ -121,8 +121,6 @@
                     </select>
                 </div>
                 <!-- Seeking Radios -->
-
-
                     <!--
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="seekingRadios" id="male" value="Male">
@@ -143,7 +141,11 @@
                             <label><input type="radio"
                                           name="seekingRadio"
                                           id="{{ @seekingRadio }}"
-                                          value="{{ @seekingRadio }}"> {{ ucfirst(@seekingRadio) }}
+                                          value="{{ @seekingRadio }}"
+                            <check if="{{ @seekingRadio == @selectedSeeking }}">
+                                        checked="checked"
+                            </check>
+                            > {{ ucfirst(@seekingRadio) }}
                                 </input></label><br>
                         </div>
                     </repeat>
