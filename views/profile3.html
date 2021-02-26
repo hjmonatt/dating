@@ -1,7 +1,6 @@
 <!--Heather Monatt
    February 10th, 2021
    This is my profile form 3 page - gathers interests (indoor and outdoor)-->
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -61,10 +60,10 @@
                     <check if="{{ @errors['indoor'] }}">{{ @errors['indoor'] }}</check>
                     <repeat group="{{ @indoors }}" value="{{ @indoor }}">
                         <div class="form-check col-md-3">
-                        <label><input type="checkbox"
-                                      name="indoor[]"
-                                      id="{{ @indoor }}"
-                                      value="{{ @indoor }}"> {{ ucfirst(@indoor) }}</label><br>
+                            <label><input type="checkbox"
+                                          name="indoor[]"
+                                          id="{{ @indoor }}"
+                                          value="{{ @indoor }}"> {{ ucfirst(@indoor) }}</label><br>
                         </div>
                     </repeat>
                 </div>

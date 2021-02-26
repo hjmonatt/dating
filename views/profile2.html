@@ -1,7 +1,6 @@
 <!--Heather Monatt
    February 10th, 2021
    This is my profile form 2 page - gathers email, state of user location, seeking, and bio-->
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -65,8 +64,8 @@
                 </div>
                 <!-- State -->
                 <label for="state" id="stateLabel"><strong>State</strong></label>
-               <div class="form-group input-group mb-3" id="stateSelect">
-                   <select name="state" size="1" class="custom-select" id="state">
+                <div class="form-group input-group mb-3" id="stateSelect">
+                    <select name="state" size="1" class="custom-select" id="state">
                         <option selected value="">{{ @selectedState }}</option>
                         <option value="Alabama">Alabama</option>
                         <option value="Alaska">Alaska</option>
@@ -118,27 +117,29 @@
                         <option value="West Virginia">West Virginia</option>
                         <option value="Wisconsin">Wisconsin</option>
                         <option value="Wyoming">Wyoming</option>
-                       <check if="{{ @state == @selectedState }}">
-                           selected
-                       </check>
-
-                   </select>
+                        <check if="{{ @state == @selectedState }}">
+                            checked="checked"
+                        </check>
+                    </select>
                 </div>
                 <!-- Seeking Radios -->
                 <label id="seekingLabel"><strong>Seeking</strong></label><br>
-                    <repeat group="{{ @seekingRadios }}" value="{{ @seekingRadio }}">
-                        <div class="form-check form-check-inline" id="radios">
-                            <label><input type="radio"
-                                          name="seekingRadio"
-                                          id="{{ @seekingRadio }}"
-                                          value="{{ @seekingRadio }}"
+                <repeat group="{{ @seekingRadios }}" value="{{ @seekingRadio }}">
+                    <div class="form-check form-check-inline" id="radios">
+                        <label>
+                            <input type="radio"
+                                   name="seekingRadio"
+                                   id="{{ @seekingRadio }}"
+                                   value="{{ @seekingRadio }}"
                             <check if="{{ @seekingRadio == @selectedSeeking }}">
-                                        checked="checked"
+                                checked="checked"
                             </check>
                             > {{ ucfirst(@seekingRadio) }}
-                                </input></label><br>
-                        </div>
-                    </repeat>
+                            </input>
+                        </label>
+                        <br>
+                    </div>
+                </repeat>
             </div>
             <!-- Right Side -->
             <div class="col-md-6" id="right2">

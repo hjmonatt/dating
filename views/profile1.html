@@ -1,7 +1,6 @@
 <!--Heather Monatt
    February 10th, 2021
    This is my profile form 1 page - gathers name, age, gender, & phone number -->
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -81,19 +80,22 @@
                 </div>
                 <!-- Gender Radios -->
                 <label id="genderLabel"><strong>Gender</strong></label><br>
-                    <repeat group="{{ @genderRadios }}" value="{{ @genderRadio }}">
-                        <div class="form-check form-check-inline" id="radios">
-                               <label><input type="radio"
-                                             name="genderRadio"
-                                             id="{{ @genderRadio }}"
-                                             value="{{ @genderRadio }}"
-                                   <check if="{{ @genderRadio == @selectedGender }}">
-                                       checked="checked"
-                                   </check>
-                               > {{ ucfirst(@genderRadio) }}
-                               </input></label><br>
-                        </div>
-                    </repeat>
+                <repeat group="{{ @genderRadios }}" value="{{ @genderRadio }}">
+                    <div class="form-check form-check-inline" id="radios">
+                        <label>
+                            <input type="radio"
+                                   name="genderRadio"
+                                   id="{{ @genderRadio }}"
+                                   value="{{ @genderRadio }}"
+                            <check if="{{ @genderRadio == @selectedGender }}">
+                                checked="checked"
+                            </check>
+                            > {{ ucfirst(@genderRadio) }}
+                            </input>
+                        </label>
+                        <br>
+                    </div>
+                </repeat>
                 <br>
                 <br>
                 <!-- Phone Number -->
