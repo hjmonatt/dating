@@ -107,7 +107,7 @@ class Validate
      */
     function validState($selectedState)
     {
-        $validUserState = $this->_dataLayer->getState();
+        $validUserState = $this->_dataLayer->getStates();
         return in_array($selectedState, $validUserState);
     }
 

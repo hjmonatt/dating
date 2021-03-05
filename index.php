@@ -39,7 +39,7 @@ $f3->route('GET|POST /profile2', function() use ($controller){
 });
 
 //Define a profile3 route
-$f3->route('GET|POST /profile3', function($f3) use ($controller) {
+$f3->route('GET|POST /profile3', function() use ($controller) {
     $controller->profile3();
 });
 

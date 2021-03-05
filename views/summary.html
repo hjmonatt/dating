@@ -59,7 +59,13 @@
                 <li class="list-group-item"><strong>State: {{ @SESSION.membership->getState() }}</strong></li>
                 <li class="list-group-item"><strong>Seeking: {{ @SESSION.membership->getSeeking() }}</strong></li>
                 <check if="{{ @SESSION.membership instanceof PremiumMember }}">
-                    <li class="list-group-item"><strong>Interests: {{ @SESSION.membership->getIndoor() }}, {{ @SESSION.membership->getOutdoor() }}</strong></li>
+                    <li class="list-group-item"><strong>Interests: </strong>
+                        <repeat group="{{ @SESSION.membership->getIndoor() }}" value="{{ @interest }}">
+                        </repeat>
+                        <repeat group="{{ @SESSION.membership->getOutdoor() }}" value="{{ @interest }}">
+
+                        </repeat>
+                    </li>
                 </check>
             </ul>
         </div>

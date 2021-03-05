@@ -54,7 +54,7 @@ class DataLayer
      * getState() - returns an array of states
      * @return - string[]
      */
-    function getState()
+    function getStates()
     {
         return array('Alabama',
             'Alaska',
