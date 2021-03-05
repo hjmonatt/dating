@@ -105,6 +105,15 @@
                     <check if="{{ isset(@errors['phone']) }}">
                         <span>{{ @errors['phone'] }}</span>
                     </check>
+                    <br>
+                </div>
+                <!-- Premium Membership Checkbox -->
+                <label for="membershipCheck" id="membershipLabel"><strong>Premium Membership</strong></label>
+                <div class="form-group" id="memberCheckBox">
+                    <label><input type="checkbox"
+                                  id="membershipCheck"
+                                  name="membership"
+                                  value="Premium Account"> Sign me up for a Premium Account!</label><br>
                 </div>
             </div>
             <!-- Right Side -->

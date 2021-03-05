@@ -99,7 +99,7 @@ input{
 
 /* Label Positioning */
 #ageLabel, #fnameLabel, #lnameLabel, #genderLabel, #phoneLabel, #emailLabel,
-#stateLabel, #seekingLabel{
+#stateLabel, #seekingLabel, #membershipLabel{
     padding-left: 20px;
 }
 
@@ -115,8 +115,7 @@ input{
 }
 
 /* Radio Div*/
-#radios
-{
+#radios{
     padding-left: 20px;
 }
 
@@ -128,6 +127,11 @@ input{
 /* Outdoor Interest Checkmarks */
 #outdoorChecks{
     padding-left: 50px;
+}
+
+/* Membership Checkmark */
+#memberCheckBox{
+    padding-left: 20px;
 }
 
 /* State div */
