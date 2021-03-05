@@ -3,10 +3,14 @@
 class Controller
 {
     private $_f3;
+    private $_validator;
+    private $_dataLayer;
 
     function __construct($f3)
     {
         $this->_f3 = $f3;
+        $this->_validator = new Validate();
+        $this->_dataLayer = new DataLayer();
     }
 
     function home()
@@ -17,6 +21,7 @@ class Controller
 
     function profile()
     {
+        $this->_f3->set('genderRadios', $this->_dataLayer->getGender());
         //if the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -27,42 +32,61 @@ class Controller
             $userPhone = trim($_POST['phone']);
             $userGender = $_POST['genderRadio'];
 
-            //if the data is valid --> store in session
-            if (validFirstName($userFName)) {
-                $_SESSION['firstName'] = $userFName;
-            } //data is not valid -> set an error in F3 hive
-            else {
+            //validate first name
+            if(!$this->_validator->validFirstName($userFName)){
                 $this->_f3->set('errors["firstName"]', "First name cannot be blank and must be alphabetical");
             }
-            //if the data is valid --> store in session
-            if (validLastName($userLName)) {
-                $_SESSION['lastName'] = $userLName;
-            } //data is not valid -> set an error in F3 hive
-            else {
+//            if (validFirstName($userFName)) {
+//                $_SESSION['firstName'] = $userFName;
+//            } //data is not valid -> set an error in F3 hive
+//            else {
+//                $this->_f3->set('errors["firstName"]', "First name cannot be blank and must be alphabetical");
+//            }
+            //validate last name
+            if(!$this->_validator->validLastName($userLName)) {
                 $this->_f3->set('errors["lastName"]', "Last name cannot be blank and must be alphabetical");
             }
-            //if the data is valid --> store in session
-            if (validAge($userAge)) {
-                $_SESSION['age'] = $userAge;
-            } //data is not valid -> set an error in F3 hive
-            else {
+//            if (validLastName($userLName)) {
+//                $_SESSION['lastName'] = $userLName;
+//            } //data is not valid -> set an error in F3 hive
+//            else {
+//                $this->_f3->set('errors["lastName"]', "Last name cannot be blank and must be alphabetical");
+//            }
+            //validate age
+            if(!$this->_validator->validAge($userAge)){
                 $this->_f3->set('errors["age"]', "Age must be numeric and between 18 and 118");
             }
-            //if the data is valid --> store in session
-            if (validPhone($userPhone)) {
-                $_SESSION['phone'] = $userPhone;
-            } //data is not valid -> set an error in F3 hive
-            else {
+//            if (validAge($userAge)) {
+//                $_SESSION['age'] = $userAge;
+//            } //data is not valid -> set an error in F3 hive
+//            else {
+//                $this->_f3->set('errors["age"]', "Age must be numeric and between 18 and 118");
+//            }
+            //validate phone number
+            if(!$this->_validator->validPhone($userPhone)){
                 $this->_f3->set('errors["phone"]', "Phone number must be in this format: 555-867-5309");
             }
+//            if (validPhone($userPhone)) {
+//                $_SESSION['phone'] = $userPhone;
+//            } //data is not valid -> set an error in F3 hive
+//            else {
+//                $this->_f3->set('errors["phone"]', "Phone number must be in this format: 555-867-5309");
+//            }
 
             //add data from profile1 to session array
             //gender
-            if (validGender($userGender)) {
-                $_SESSION['genderRadio'] = $userGender;
-            } else {
-                $this->_f3->set('errors[genderRadio]', "Go away Evildoer!");
+            //validate gender
+            if(isset($userGender)){
+                if(!$this->_validator->validGender($userGender)){
+                    $this->_f3->set('errors[genderRadio]', "Go away Evildoer!");
+                }
             }
+
+//            if (validGender($userGender)) {
+//                $_SESSION['genderRadio'] = $userGender;
+//            } else {
+//                $this->_f3->set('errors[genderRadio]', "Go away Evildoer!");
+//            }
 
             //if there are no errors, redirect to /profile2
             if (empty($this->_f3->get('errors'))) {
@@ -81,8 +105,9 @@ class Controller
         $this->_f3->set('userLName', isset($userLName) ? $userLName : "");
         $this->_f3->set('userAge', isset($userAge) ? $userAge : "");
         $this->_f3->set('userPhone', isset($userPhone) ? $userPhone : "");
-        $this->_f3->set('genderRadios', getGender());
-        $this->_f3->set('selectedGender', $_POST['genderRadio']);
+        $this->_f3->set('genderRadios', $this->_dataLayer->getGender());
+        $this->_f3->set('userGender', isset($userGender) ? $userGender : "");
+        //$this->_f3->set('selectedGender', $_POST['genderRadio']);
 
         //echo "Profile 1";
         $view = new Template();
@@ -91,6 +116,9 @@ class Controller
 
     function profile2()
     {
+        $this->_f3->set('genderRadio', $this->_dataLayer->getGender());
+        $this->_f3->set('state', $this->_dataLayer->getState());
+
             //if the form has been submitted
             if ($_SERVER['REQUEST_METHOD']=='POST') {
 
@@ -100,38 +128,50 @@ class Controller
                 $userBio = $_POST['bio'];
 
                 //email address validation
-                if (validEmail($userEmail)) {
-                    $_SESSION['email'] = $userEmail;
-                } else {
+                if(!$this->_validator->validEmail($userEmail)){
                     $this->_f3->set('errors["email"]', "Invalid email format");
                 }
+//                if (validEmail($userEmail)) {
+//                    $_SESSION['email'] = $userEmail;
+//                } else {
+//                    $this->_f3->set('errors["email"]', "Invalid email format");
+//                }
                 //add data from profile2 to session array
-                //state
-                if(isset($userState)){
-                    $_SESSION['state'] = $userState;
-                }
 
-                if (validState($userState)) {
-                    $_SESSION['state'] = $userState;
-                } else {
-                    $this->_f3->set('errors["state"]', "Go away Evildoer!");
-                }
+                //validate state
+                    if($this->_validator->validState($userState)){
+                        $this->_f3->set('errors["state"]', "Go away Evildoer!");
+                    }
+                    //$_SESSION['state'] = $userState;
+
+
+//                if (validState($userState)) {
+//                    $_SESSION['state'] = $userState;
+//                } else {
+//                    $this->_f3->set('errors["state"]', "Go away Evildoer!");
+//                }
 
 
                 //add data from profile1 to session array
-                //gender
-                if (validSeeking($userSeeking)) {
-                    $_SESSION['seekingRadio'] = $userSeeking;
-                } else {
-                    $this->_f3->set('errors["seekingRadio"]', "Go away Evildoer!");
+                //validate gender
+                if(isset($userSeeking)){
+                    if($this->_validator->validSeeking($userSeeking)){
+                        $this->_f3->set('errors["seekingRadio"]', "Go away Evildoer!");
+                    }
                 }
 
+//                if (validSeeking($userSeeking)) {
+//                    $_SESSION['seekingRadio'] = $userSeeking;
+//                } else {
+//                    $this->_f3->set('errors["seekingRadio"]', "Go away Evildoer!");
+//                }
 
-                //get data from profile 3 to session array
-                if (isset($userBio)) {
-                    $_SESSION['bio'] = $userBio;
 
-                }
+//                //get data from profile 3 to session array
+//                if (isset($userBio)) {
+//                    $_SESSION['bio'] = $userBio;
+//
+//                }
                 //if there are no errors, redirect to /profile3
                 if(empty($this->_f3->get('errors'))) {
 
@@ -152,12 +192,17 @@ class Controller
 
             $this->_f3->set('userEmail', isset($userEmail) ? $userEmail : "");
 
-            $this->_f3->set('states', getState());
-            $this->_f3->set('selectedState', $_POST['state']);
+            //$this->_f3->set('states', getState());
+            $this->_f3->set('userState', isset($userState) ? $userState : "");
+            $this->_f3->set('selectedState', $this->_dataLayer->getSeeking());
+            //$this->_f3->set('selectedState', $_POST['state']);
             //$f3->set('userState', isset($userState) ? $userState : "");
 
-            $this->_f3->set('seekingRadios', getSeeking());
-            $this->_f3->set('selectedSeeking', $_POST['seekingRadio']);
+            //$this->_f3->set('seekingRadios', getSeeking());
+            $this->_f3->set('userSeeking', isset($userSeeking) ? $userSeeking : "");
+            $this->_f3->set('seekingRadios', $this->_dataLayer->getSeeking());
+            //$this->_f3->set('userSeeking', isset($userGender) ? $userGender : "");
+            //$this->_f3->set('selectedSeeking', $_POST['seekingRadio']);
 
             $this->_f3->set('userBio', isset($userBio) ? $userBio : "");
 
@@ -172,45 +217,63 @@ class Controller
         {
                 //if the form has been submitted
                 if($_SERVER['REQUEST_METHOD']=='POST') {
+                    $userIndoor = $_POST['indoor'];
+                    $userOutdoor = $_POST['outdoor'];
 
                     //get data from profile 3 to session array
-                    if (isset($_POST['indoor'])) {
-                        $userIndoor = $_POST['indoor'];
-
-                        //data is valid -> add to session
-                        if (validIndoor($userIndoor)) {
-                            $_SESSION['indoor'] = implode(", ", $userIndoor);
-                        }
-                        //data is not valid -> We've been spoofed!
-                        else {
+                    if (isset($userIndoor)) {
+                        if(!$this->_validator->validIndoor($userIndoor)){
                             $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
                         }
+
+//                        //data is valid -> add to session
+//                        if (validIndoor($userIndoor)) {
+//                            $_SESSION['indoor'] = implode(", ", $userIndoor);
+//                        }
+//                        //data is not valid -> We've been spoofed!
+//                        else {
+//                            $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
+//                        }
                     }
                     //get data from profile 3 to session array
-                    if (isset($_POST['outdoor'])) {
-                        $userOutdoor = $_POST['outdoor'];
-
-                        //data is valid -> add to session
-                        if (validOutdoor($userOutdoor)) {
-                            $_SESSION['outdoor'] = implode(", ", $userOutdoor);
-                        }
-                        //data is not valid -> We've been spoofed!
-                        else {
+                    if (isset($userOutdoor)) {
+                        if(!$this->_validator->validOutdoor($userOutdoor)){
                             $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
                         }
+
+                        //data is valid -> add to session
+//                        if (validOutdoor($userOutdoor)) {
+//                            $_SESSION['outdoor'] = implode(", ", $userOutdoor);
+//                        }
+//                        //data is not valid -> We've been spoofed!
+//                        else {
+//                            $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
+//                        }
                     }
                     //if there are no errors, redirect user to summary page
                     if(empty($this->_f3->get('errors'))){
 
-                        $_SESSION['membership']->setIndoorInterests($userIndoor);
-                        $_SESSION['membership']->setOutdoorInterests($userOutdoor);
+                        if(isset($userIndoor)){
+                            $_SESSION['membership']->setIndoorInterests($userIndoor);
+                        }
+                        if(isset($userOutdoor)){
+                            $_SESSION['membership']->setOutdoorInterests($userOutdoor);
+                        }
+
+
+                        //$_SESSION['membership']->setIndoorInterests($userIndoor);
+                        //$_SESSION['membership']->setOutdoorInterests($userOutdoor);
 
                         $this->_f3->reroute('/summary');
                     }
                 }
 
-                $this->_f3->set('indoors', getIndoor());
-                $this->_f3->set('outdoors', getOutdoor());
+                //$this->_f3->set('indoors', getIndoor());
+                $this->_f3->set('indoors', isset($userIndoor) ? $userIndoor : []);
+                $this->_f3->set('indoors', $this->_dataLayer->getIndoor());
+                $this->_f3->set('outdoors', isset($userOutdoor) ? $userOutdoor : []);
+                $this->_f3->set('outdoors', $this->_dataLayer->getOutdoor());
+                //$this->_f3->set('outdoors', getOutdoor());
 
                 //display a view
                 //echo "Profile 3 Route";

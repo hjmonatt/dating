@@ -7,7 +7,14 @@
  * Contains validation function for Dating Website
  */
 
+class Validate
+{
+    private $_dataLayer;
 
+    function __construct()
+    {
+        $this->_dataLayer = new DataLayer();
+    }
     /**
      * validFirstName() checks to see that a string is all alphabetic
      */
@@ -53,7 +60,7 @@
      */
     function validIndoor($selectedIndoor)
     {
-        $validIndoorActs = getIndoor();
+        $validIndoorActs = $this->_dataLayer->getIndoor();
         foreach ($selectedIndoor as $selected) {
             if (!in_array($selected, $validIndoorActs)) {
                 return false;
@@ -67,7 +74,7 @@
      */
     function validOutdoor($selectedOutdoor)
     {
-        $validOutdoorActs = getOutdoor();
+        $validOutdoorActs = $this->_dataLayer->getOutdoor();
         foreach ($selectedOutdoor as $selected) {
             if (!in_array($selected, $validOutdoorActs)) {
                 return false;
@@ -82,7 +89,7 @@
      */
     function validSeeking($selectedSeeking)
     {
-        $validUserSeeking = getSeeking();
+        $validUserSeeking = $this->_dataLayer->getSeeking();
         return in_array($selectedSeeking, $validUserSeeking);
     }
 
@@ -91,7 +98,7 @@
      */
     function validGender($selectedGender)
     {
-        $validUserGender = getGender();
+        $validUserGender = $this->_dataLayer->getGender();
         return in_array($selectedGender, $validUserGender);
     }
 
@@ -100,7 +107,9 @@
      */
     function validState($selectedState)
     {
-        $validUserState = getState();
+        $validUserState = $this->_dataLayer->getState();
         return in_array($selectedState, $validUserState);
     }
+
+}
 

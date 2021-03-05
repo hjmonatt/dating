@@ -51,15 +51,15 @@
         <!-- Left Side -->
         <div class="col-md-6" id="summaryList">
             <ul class="list-group">
-                <li class="list-group-item"><strong>Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}</strong></li>
-                <li class="list-group-item"><strong>Gender: {{ @SESSION.genderRadio }}</strong></li>
-                <li class="list-group-item"><strong>Age: {{ @SESSION.age }}</strong></li>
-                <li class="list-group-item"><strong>Phone: {{ @SESSION.phone }}</strong></li>
-                <li class="list-group-item"><strong>Email: {{ @SESSION.email }}</strong></li>
-                <li class="list-group-item"><strong>State: {{ @SESSION.state }}</strong></li>
-                <li class="list-group-item"><strong>Seeking: {{ @SESSION.seekingRadio }}</strong></li>
+                <li class="list-group-item"><strong>Name: {{ @SESSION.membership->getFName() }} {{ @SESSION.membership->getLName() }}</strong></li>
+                <li class="list-group-item"><strong>Gender: {{ @SESSION.membership->getGender() }}</strong></li>
+                <li class="list-group-item"><strong>Age: {{ @SESSION.membership->getAge() }}</strong></li>
+                <li class="list-group-item"><strong>Phone: {{ @SESSION.membership->getPhone() }}</strong></li>
+                <li class="list-group-item"><strong>Email: {{ @SESSION.membership->getEmail() }}</strong></li>
+                <li class="list-group-item"><strong>State: {{ @SESSION.membership->getState() }}</strong></li>
+                <li class="list-group-item"><strong>Seeking: {{ @SESSION.membership->getSeeking() }}</strong></li>
                 <check if="{{ @SESSION.membership instanceof PremiumMember }}">
-                    <li class="list-group-item"><strong>Interests: {{ @SESSION.indoor }}, {{ @SESSION.outdoor }}</strong></li>
+                    <li class="list-group-item"><strong>Interests: {{ @SESSION.membership->getIndoor() }}, {{ @SESSION.membership->getOutdoor() }}</strong></li>
                 </check>
             </ul>
         </div>
@@ -70,7 +70,7 @@
             <!-- Bio -->
             <label id="bioLabel"><strong>Biography</strong></label>
             <div id="bioBlurb" class="text-center">
-                <h6>{{ @SESSION.bio }}</h6>
+                <h6>{{ @SESSION.membership->getBio() }}</h6>
                 <br>
             </div>
         </div>

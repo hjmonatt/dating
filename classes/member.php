@@ -41,7 +41,7 @@ class Member
     /**
      * @param String $fname
      */
-    public function setFName($fname): void
+    public function setFName($fname)
     {
         $this->_fname = $fname;
     }
@@ -57,7 +57,7 @@ class Member
     /**
      * @param String $lname
      */
-    public function setLName($lname): void
+    public function setLName($lname)
     {
         $this->_lname = $lname;
     }
@@ -73,7 +73,7 @@ class Member
     /**
      * @param int $age
      */
-    public function setAge($age): void
+    public function setAge($age)
     {
         $this->_age = $age;
     }
@@ -89,7 +89,7 @@ class Member
     /**
      * @param String $gender
      */
-    public function setGender($gender): void
+    public function setGender($gender)
     {
         $this->_gender = $gender;
     }
@@ -105,7 +105,7 @@ class Member
     /**
      * @param String $phone
      */
-    public function setPhone($phone): void
+    public function setPhone($phone)
     {
         $this->_phone = $phone;
     }
@@ -121,7 +121,7 @@ class Member
     /**
      * @param String $email
      */
-    public function setEmail($email): void
+    public function setEmail($email)
     {
         $this->_email = $email;
     }
@@ -137,7 +137,7 @@ class Member
     /**
      * @param String $state
      */
-    public function setState($state): void
+    public function setState($state)
     {
         $this->_state = $state;
     }
@@ -153,7 +153,7 @@ class Member
     /**
      * @param String $seeking
      */
-    public function setSeeking($seeking): void
+    public function setSeeking($seeking)
     {
         $this->_seeking = $seeking;
     }
@@ -169,7 +169,7 @@ class Member
     /**
      * @param String $bio
      */
-    public function setBio($bio): void
+    public function setBio($bio)
     {
         $this->_bio = $bio;
     }
