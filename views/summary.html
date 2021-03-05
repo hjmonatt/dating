@@ -58,7 +58,9 @@
                 <li class="list-group-item"><strong>Email: {{ @SESSION.email }}</strong></li>
                 <li class="list-group-item"><strong>State: {{ @SESSION.state }}</strong></li>
                 <li class="list-group-item"><strong>Seeking: {{ @SESSION.seekingRadio }}</strong></li>
-                <li class="list-group-item"><strong>Interests: {{ @SESSION.indoor }}, {{ @SESSION.outdoor }}</strong></li>
+                <check if="{{ @SESSION.membership instanceof PremiumMember }}">
+                    <li class="list-group-item"><strong>Interests: {{ @SESSION.indoor }}, {{ @SESSION.outdoor }}</strong></li>
+                </check>
             </ul>
         </div>
         <!-- Right Side -->
