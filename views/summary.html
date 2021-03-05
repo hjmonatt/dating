@@ -60,9 +60,9 @@
                 <li class="list-group-item"><strong>Seeking: {{ @SESSION.membership->getSeeking() }}</strong></li>
                 <check if="{{ @SESSION.membership instanceof PremiumMember }}">
                     <li class="list-group-item"><strong>Interests: </strong>
-                        <repeat group="{{ @SESSION.membership->getIndoor() }}" value="{{ @interest }}">
+                        <repeat group="{{ @SESSION.membership->getIndoorInterests() }}" value="{{ @indoor }}">
                         </repeat>
-                        <repeat group="{{ @SESSION.membership->getOutdoor() }}" value="{{ @interest }}">
+                        <repeat group="{{ @SESSION.membership->getOutdoorInterests() }}" value="{{ @outdoorInterest }}">
 
                         </repeat>
                     </li>
@@ -76,7 +76,7 @@
             <!-- Bio -->
             <label id="bioLabel"><strong>Biography</strong></label>
             <div id="bioBlurb" class="text-center">
-                <h6>{{ @SESSION.membership->getBio() }}</h6>
+                <h6>{{ ucfirst(@SESSION.membership->getBio()) }}</h6>
                 <br>
             </div>
         </div>
