@@ -4,7 +4,7 @@
  * Heather Monatt
  * February 22nd, 2021
  * model/validate.php
- * Contains validation function for Dating Website
+ * Contains validation functions for Dating Website
  */
 
 class Validate

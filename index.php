@@ -3,7 +3,8 @@
 //Heather Monatt
 //January 27th, 2021
 //February 10th, 2021 - updated
-//This is my CONTROLLER
+//March 4th, 2021 - updated
+//This is my index.php, the controller
 
 //Turn on error reporting
 ini_set('display_errors', 1);

@@ -4,15 +4,17 @@
  * controller for the dating web app.
  * This file contains methods that are called in index.php
  * @author Heather Monatt
- *
+ * March 4th, 2021
  */
 
 class Controller
 {
+    //fields
     private $_f3;
     private $_validator;
     private $_dataLayer;
 
+    //constructor
     function __construct($f3)
     {
         $this->_f3 = $f3;
@@ -20,14 +22,18 @@ class Controller
         $this->_dataLayer = new DataLayer();
     }
 
+    //displays home.html
     function home()
     {
+        //display view
         $view = new Template();
         echo $view->render('views/home.html');
     }
 
+    //displays profile form part 1
     function profile()
     {
+        //if form is submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             //get the data from the post array
@@ -62,6 +68,7 @@ class Controller
             //if there are no errors, redirect to /profile2
             if (empty($this->_f3->get('errors'))) {
 
+                //check if user is premium member
                 if (isset($_POST['premium'])) {
                     $_SESSION['member'] = new PremiumMember($userFName, $userLName, $userAge, $userGender, $userPhone);
                 } else {
@@ -79,15 +86,18 @@ class Controller
         $this->_f3->set('genderRadios', $this->_dataLayer->getGender());
         $this->_f3->set('userGender', isset($userGender) ? $userGender : "");
 
+        //display view
         $view = new Template();
         echo $view->render('views/profile1.html');
     }
 
+    //displays profile form part 2
     function profile2()
     {
         //if the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+            //get data from POST array
             $userEmail = trim($_POST['email']);
             $userState = $_POST['state'];
             $userSeeking = $_POST['seeking'];
@@ -114,11 +124,14 @@ class Controller
             //if there are no errors, redirect to /profile3
             if (empty($this->_f3->get('errors'))) {
 
+                //set data to member SESSION array
                 $_SESSION['member']->setEmail($userEmail);
                 $_SESSION['member']->setState($userState);
                 $_SESSION['member']->setSeeking($userSeeking);
                 $_SESSION['member']->setBio($userBio);
 
+                //if member is a premium member, send to profile form 3 (interests page)
+                //else send them to the summary page
                 if ($_SESSION['member'] instanceof PremiumMember) {
                     $this->_f3->reroute('/profile3');
                 } else {
@@ -139,8 +152,10 @@ class Controller
         echo $view->render('views/profile2.html');
     }
 
+    //displays profile form part 3 (interests page)
     function profile3()
     {
+        //set interests
         $this->_f3->set('indoors', $this->_dataLayer->getIndoor());
         $this->_f3->set('outdoors', $this->_dataLayer->getOutdoor());
 
@@ -149,20 +164,21 @@ class Controller
             $userIndoor = $_POST['indoor'];
             $userOutdoor = $_POST['outdoor'];
 
+            //validate indoor interests
             if (isset($userIndoor)) {
                 if (!$this->_validator->validIndoor($userIndoor)) {
                     $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
                 }
             }
 
-            //get data from profile 3
+            //validate outdoor interests
             if (isset($userOutdoor)) {
                 if (!$this->_validator->validOutdoor($userOutdoor)) {
                     $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
                 }
             }
 
-            //if there are no errors, redirect user to summary page
+            //if there are no errors, send user to summary page
             if (empty($this->_f3->get('errors'))) {
 
                 if (isset($userIndoor)) {
@@ -187,11 +203,14 @@ class Controller
             echo $view->render('views/profile3.html');
         }
 
+        //displays summary page
         function summary()
         {
+            //display a view
             $view = new Template();
             echo $view->render('views/summary.html');
 
+            //destroy the session
             session_destroy();
         }
 }

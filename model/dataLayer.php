@@ -2,7 +2,7 @@
 /*
  * Heather Monatt
  * February 22nd, 2021
- * model.dataLayer.php
+ * model/dataLayer.php
  * returns data for my dating website
  *
  */
