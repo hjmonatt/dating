@@ -1,14 +1,20 @@
 <?php
 
+/**
+ * PremiumMember class
+ * takes the user's information and stores it as an object
+ * @author Heather Monatt
+ */
+
 class PremiumMember extends Member
 {
     private $_indoorInterests;
     private $_outdoorInterests;
 
     /**
-     * @return Array
+     * @return Array - Premium Member's indoor interests
      */
-    public function getIndoorInterests()
+    public function getIndoorInterests() : array
     {
         return $this->_indoorInterests;
     }
@@ -16,15 +22,15 @@ class PremiumMember extends Member
     /**
      * @param Array $indoorInterests
      */
-    public function setIndoorInterests($indoorInterests): void
+    public function setIndoorInterests($indoorInterests)
     {
         $this->_indoorInterests = $indoorInterests;
     }
 
     /**
-     * @return Array
+     * @return Array - Premium Member's outdoor interests
      */
-    public function getOutdoorInterests()
+    public function getOutdoorInterests(): array
     {
         return $this->_outdoorInterests;
     }
@@ -32,7 +38,7 @@ class PremiumMember extends Member
     /**
      * @param Array $outdoorInterests
      */
-    public function setOutdoorInterests($outdoorInterests): void
+    public function setOutdoorInterests($outdoorInterests)
     {
         $this->_outdoorInterests = $outdoorInterests;
     }

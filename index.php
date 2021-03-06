@@ -11,8 +11,6 @@ error_reporting(E_ALL);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
-//require_once('model/dataLayer.php');
-//require_once('model/validate.php');
 
 //Create an instance of the Base class
 $f3 = Base::instance();
@@ -44,7 +42,7 @@ $f3->route('GET|POST /profile3', function() use ($controller) {
 });
 
 //Define a summary route
-$f3->route('GET /summary', function() use ($controller) {
+$f3->route('GET|POST /summary', function() use ($controller) {
     $controller->summary();
 });
 

@@ -6,9 +6,9 @@
  * returns data for my dating website
  *
  */
+
 class DataLayer
 {
-
     /**
      * getIndoor() - returns an array of indoor interests
      * @return - string[]
@@ -109,4 +109,5 @@ class DataLayer
             'Wyoming');
 
     }
+
 }

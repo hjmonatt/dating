@@ -84,10 +84,10 @@
                     <div class="form-check form-check-inline" id="radios">
                         <label>
                             <input type="radio"
-                                   name="genderRadio"
+                                   name="gender"
                                    id="{{ @genderRadio }}"
                                    value="{{ @genderRadio }}"
-                            <check if="{{ @genderRadio == @selectedGender }}">
+                            <check if="{{ @genderRadio == @userGender }}">
                                 checked="checked"
                             </check>
                             > {{ ucfirst(@genderRadio) }}
@@ -108,12 +108,12 @@
                     <br>
                 </div>
                 <!-- Premium Membership Checkbox -->
-                <label for="membershipCheck" id="membershipLabel"><strong>Premium Membership</strong></label>
+                <label for="premium" id="membershipLabel"><strong>Premium Membership</strong></label>
                 <div class="form-group" id="memberCheckBox">
                     <label><input type="checkbox"
-                                  id="membershipCheck"
-                                  name="membership"
-                                  value="Premium Account"> Sign me up for a Premium Account!</label><br>
+                                  id="premium"
+                                  name="premium"
+                                  value="premium"> Sign me up for a Premium Account!</label><br>
                 </div>
             </div>
             <!-- Right Side -->

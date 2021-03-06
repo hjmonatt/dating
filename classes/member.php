@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Member class
+ * takes the user's info and stores it as an object
+ * @author Heather Monatt
+ */
+
 class Member
 {
     private $_fname;
@@ -18,7 +24,7 @@ class Member
      * @param $lname - String of member's last name
      * @param $age - int of member's age
      * @param $gender - String of member's gender
-     * @param $phone - String member's phone number
+     * @param $phone - String of member's phone number
      */
     public function __construct($fname, $lname, $age, $gender, $phone)
     {
@@ -31,7 +37,7 @@ class Member
     }
 
     /**
-     * @return String
+     * @return String - member's first name
      */
     public function getFName()
     {
@@ -47,7 +53,7 @@ class Member
     }
 
     /**
-     * @return String
+     * @return String - member's last name
      */
     public function getLName()
     {
@@ -63,7 +69,7 @@ class Member
     }
 
     /**
-     * @return int
+     * @return int - member's age
      */
     public function getAge()
     {
@@ -79,7 +85,7 @@ class Member
     }
 
     /**
-     * @return String
+     * @return String - member's gender
      */
     public function getGender()
     {
@@ -95,7 +101,7 @@ class Member
     }
 
     /**
-     * @return String
+     * @return String - member's phone number
      */
     public function getPhone()
     {
@@ -111,7 +117,7 @@ class Member
     }
 
     /**
-     * @return String
+     * @return String - member's email
      */
     public function getEmail()
     {
@@ -127,7 +133,7 @@ class Member
     }
 
     /**
-     * @return String
+     * @return String - member's state location
      */
     public function getState()
     {
@@ -143,7 +149,7 @@ class Member
     }
 
     /**
-     * @return String
+     * @return String - member's seeking gender
      */
     public function getSeeking()
     {
@@ -159,7 +165,7 @@ class Member
     }
 
     /**
-     * @return String
+     * @return String - member's bio
      */
     public function getBio()
     {

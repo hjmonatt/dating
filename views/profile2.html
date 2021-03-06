@@ -128,11 +128,11 @@
                     <div class="form-check form-check-inline" id="radios">
                         <label>
                             <input type="radio"
-                                   name="seekingRadio"
+                                   name="seeking"
                                    id="{{ @seekingRadio }}"
                                    value="{{ @seekingRadio }}"
-                            <check if="{{ @seekingRadio == @selectedSeeking }}">
-                                checked="checked"
+                            <check if="{{ @seekingRadio == @userSeeking }}">
+                                check="checked"
                             </check>
                             > {{ ucfirst(@seekingRadio) }}
                             </input>

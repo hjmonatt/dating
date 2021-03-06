@@ -28,15 +28,13 @@ class Controller
 
     function profile()
     {
-        //$this->_f3->set('genderRadio', $this->_dataLayer->getGender());
-        //if the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             //get the data from the post array
             $userFName = trim($_POST['firstName']);
             $userLName = trim($_POST['lastName']);
             $userAge = trim($_POST['age']);
-            $userGender = $_POST['genderRadio'];
+            $userGender = $_POST['gender'];
             $userPhone = trim($_POST['phone']);
 
             //validate first name
@@ -52,8 +50,10 @@ class Controller
                 $this->_f3->set('errors["age"]', "Age must be numeric and between 18 and 118");
             }
             //validate gender
-            if (!$this->_validator->validGender($userGender)) {
-                $this->_f3->set('errors[genderRadio]', "Go away Evildoer!");
+            if(isset($userGender)) {
+                if (!$this->_validator->validGender($userGender)) {
+                    $this->_f3->set('errors["gender"]', "Go away Evildoer!");
+                }
             }
             //validate phone number
             if (!$this->_validator->validPhone($userPhone)) {
@@ -62,10 +62,10 @@ class Controller
             //if there are no errors, redirect to /profile2
             if (empty($this->_f3->get('errors'))) {
 
-                if (isset($_POST['membership'])) {
-                    $_SESSION['membership'] = new PremiumMember($userFName, $userLName, $userAge, $userGender, $userPhone);
+                if (isset($_POST['premium'])) {
+                    $_SESSION['member'] = new PremiumMember($userFName, $userLName, $userAge, $userGender, $userPhone);
                 } else {
-                    $_SESSION['membership'] = new Member($userFName, $userLName, $userAge, $userGender, $userPhone);
+                    $_SESSION['member'] = new Member($userFName, $userLName, $userAge, $userGender, $userPhone);
                 }
 
                 $this->_f3->reroute('/profile2');
@@ -90,7 +90,7 @@ class Controller
 
             $userEmail = trim($_POST['email']);
             $userState = $_POST['state'];
-            $userSeeking = $_POST['seekingRadio'];
+            $userSeeking = $_POST['seeking'];
             $userBio = $_POST['bio'];
 
             //email address validation
@@ -102,8 +102,10 @@ class Controller
                 $this->_f3->set('errors["state"]', "Go away Evildoer!");
             }
             //validate seeking
-            if (!$this->_validator->validSeeking($userSeeking)) {
-                $this->_f3->set('errors["seekingRadio"]', "Go away Evildoer!");
+            if(isset($userSeeking)) {
+                if (!$this->_validator->validSeeking($userSeeking)) {
+                    $this->_f3->set('errors["seeking"]', "Go away Evildoer!");
+                }
             }
             //bio
             if (isset($userBio)) {
@@ -112,12 +114,12 @@ class Controller
             //if there are no errors, redirect to /profile3
             if (empty($this->_f3->get('errors'))) {
 
-                $_SESSION['membership']->setEmail($userEmail);
-                $_SESSION['membership']->setState($userState);
-                $_SESSION['membership']->setSeeking($userSeeking);
-                $_SESSION['membership']->setBio($userBio);
+                $_SESSION['member']->setEmail($userEmail);
+                $_SESSION['member']->setState($userState);
+                $_SESSION['member']->setSeeking($userSeeking);
+                $_SESSION['member']->setBio($userBio);
 
-                if ($_SESSION['membership'] instanceof PremiumMember) {
+                if ($_SESSION['member'] instanceof PremiumMember) {
                     $this->_f3->reroute('/profile3');
                 } else {
                     $this->_f3->reroute('/summary');
@@ -140,6 +142,9 @@ class Controller
 
     function profile3()
     {
+        $this->_f3->set('indoors', $this->_dataLayer->getIndoor());
+        $this->_f3->set('outdoors', $this->_dataLayer->getOutdoor());
+
         //if the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $userIndoor = $_POST['indoor'];
@@ -150,46 +155,52 @@ class Controller
 //                        if(!$this->_validator->validIndoor($userIndoor)){
 //                            $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
 //                        }
+//            if (isset($userIndoor)) {
+//                if (!$this->_validator->validIndoor($userIndoor)) {
+//                    $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
+//                }
+//            }
 
-            if (!$this->_validator->validIndoor($userIndoor)) {
-                $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
-            }
+                        //data is valid -> add to session
+                        if ($this->_dataLayer->getIndoor($userIndoor)) {
+                            $_SESSION['indoor'] = implode(", ", $userIndoor);
+                        }
+                        //data is not valid -> We've been spoofed!
+                        else {
+                            $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
+                        }
 
-//                        //data is valid -> add to session
-//                        if (validIndoor($userIndoor)) {
-//                            $_SESSION['indoor'] = implode(", ", $userIndoor);
-//                        }
-//                        //data is not valid -> We've been spoofed!
-//                        else {
-//                            $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
-//                        }
-
-            //get data from profile 3 to session array
-            if (!$this->_validator->validOutdoor($userOutdoor)) {
-                $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
-            }
+//            //get data from profile 3 to session array
+//            if (isset($userOutdoor)) {
+//                if (!$this->_validator->validOutdoor($userOutdoor)) {
+//                    $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
+//                }
+//            }
 
             //data is valid -> add to session
-//                        if (validOutdoor($userOutdoor)) {
-//                            $_SESSION['outdoor'] = implode(", ", $userOutdoor);
-//                        }
-//                        //data is not valid -> We've been spoofed!
-//                        else {
-//                            $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
-//                        }
+                        if ($this->_dataLayer->getOutdoor($userOutdoor)) {
+                            $_SESSION['outdoor'] = implode(", ", $userOutdoor);
+                        }
+                        //data is not valid -> We've been spoofed!
+                        else {
+                            $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
+                        }
 
             //if there are no errors, redirect user to summary page
             if (empty($this->_f3->get('errors'))) {
 
+                //$_SESSION['member']->setIndoorInterests($userIndoor);
+                //$_SESSION['member']->setOutdoorInterests($userOutdoor);
+
                 if (isset($userIndoor)) {
-                    $_SESSION['membership']->setIndoorInterests($userIndoor);
+                    $_SESSION['member']->setIndoorInterests($userIndoor);
                 } else {
-                    $_SESSION['membership']->setIndoorInterests(array('No indoor activities selected'));
+                    $_SESSION['member']->setIndoorInterests(array('No indoor activities selected'));
                 }
                 if (isset($userOutdoor)) {
-                    $_SESSION['membership']->setOutdoorInterests($userOutdoor);
+                    $_SESSION['member']->setOutdoorInterests($userOutdoor);
                 } else {
-                    $_SESSION['membership']->setOutdoorInterests(array('No outdoor activities selected'));
+                    $_SESSION['member']->setOutdoorInterests(array('No outdoor activities selected'));
                 }
 
 
@@ -201,10 +212,9 @@ class Controller
         }
 
             //$this->_f3->set('indoors', getIndoor());
-            $this->_f3->set('indoors', $this->_dataLayer->getIndoor());
-            $this->_f3->set('outdoors', $this->_dataLayer->getOutdoor());
-            $this->_f3->set('userIndoor', isset($userIndoor) ? $userIndoor : []);
-            $this->_f3->set('userOutdoor', isset($userOutdoor) ? $userOutdoor : []);
+
+            $this->_f3->set('indoor', isset($userIndoor) ? $userIndoor : []);
+            $this->_f3->set('outdoor', isset($userOutdoor) ? $userOutdoor : []);
 
             //$this->_f3->set('outdoors', getOutdoor());
 
@@ -213,17 +223,13 @@ class Controller
             echo $view->render('views/profile3.html');
         }
 
-
-
         function summary()
         {
-                $view = new Template();
-                echo $view->render('views/summary.html');
+            $view = new Template();
+            echo $view->render('views/summary.html');
 
-                //Clear the SESSION array
-                session_destroy();
+            session_destroy();
 
         }
-
 
 }

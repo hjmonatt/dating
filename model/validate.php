@@ -40,6 +40,15 @@ class Validate
     }
 
     /**
+     * validGender() checks if gender is valid
+     */
+    function validGender($gender)
+    {
+        return in_array($gender, $this->_dataLayer->getGender());
+    }
+
+
+    /**
      * validPhone() checks to see that a phone number is valid
      */
     function validPhone($phone)
@@ -56,60 +65,54 @@ class Validate
     }
 
     /**
-     * validIndoor() checks each selected indoor interest against a list of valid options
+     * validState() checks each selected state against a list of valid options
      */
-    function validIndoor($selectedIndoor)
+    function validState($state)
     {
-        $validIndoorActs = $this->_dataLayer->getIndoor();
-        foreach ($selectedIndoor as $selected) {
-            if (!in_array($selected, $validIndoorActs)) {
-                return false;
-            }
-        }
-        return true;
+        return in_array($state, $this->_dataLayer->getStates());
     }
 
     /**
      * validIndoor() checks each selected indoor interest against a list of valid options
      */
-    function validOutdoor($selectedOutdoor)
+    function validIndoor($indoor)
     {
-        $validOutdoorActs = $this->_dataLayer->getOutdoor();
-        foreach ($selectedOutdoor as $selected) {
-            if (!in_array($selected, $validOutdoorActs)) {
-                return false;
+        $valid = false;
+        foreach ($indoor as $selected) {
+            if (in_array($selected, $this->_dataLayer->getIndoor())) {
+                $valid = true;
+            }else {
+                $valid = false;
             }
         }
-        return true;
+        return $valid;
+    }
+
+    /**
+     * validIndoor() checks each selected indoor interest against a list of valid options
+     */
+    function validOutdoor($outdoor)
+    {
+        $valid = false;
+        foreach ($outdoor as $selected) {
+            if (in_array($selected, $this->_dataLayer->getOutdoor())) {
+                $valid = true;
+            }else {
+                $valid = false;
+            }
+        }
+        return $valid;
 
     }
 
     /**
      * validSeeking() checks selected seeking gender against a list of valid options
      */
-    function validSeeking($selectedSeeking)
+    function validSeeking($seeking)
     {
-        $validUserSeeking = $this->_dataLayer->getSeeking();
-        return in_array($selectedSeeking, $validUserSeeking);
+        return in_array($seeking, $this->_dataLayer->getSeeking());
     }
 
-    /**
-     * validGender() checks each selected gender against a list of valid options
-     */
-    function validGender($selectedGender)
-    {
-        $validUserGender = $this->_dataLayer->getGender();
-        return in_array($selectedGender, $validUserGender);
-    }
-
-    /**
-     * validState() checks each selected state against a list of valid options
-     */
-    function validState($selectedState)
-    {
-        $validUserState = $this->_dataLayer->getStates();
-        return in_array($selectedState, $validUserState);
-    }
 
 }
 
