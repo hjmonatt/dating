@@ -124,7 +124,6 @@ class Controller
                 } else {
                     $this->_f3->reroute('/summary');
                 }
-
             }
         }
 
@@ -150,47 +149,21 @@ class Controller
             $userIndoor = $_POST['indoor'];
             $userOutdoor = $_POST['outdoor'];
 
-            //get data from profile 3 to session array
-//                    if (isset($userIndoor)) {
-//                        if(!$this->_validator->validIndoor($userIndoor)){
-//                            $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
-//                        }
-//            if (isset($userIndoor)) {
-//                if (!$this->_validator->validIndoor($userIndoor)) {
-//                    $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
-//                }
-//            }
+            if (isset($userIndoor)) {
+                if (!$this->_validator->validIndoor($userIndoor)) {
+                    $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
+                }
+            }
 
-                        //data is valid -> add to session
-                        if ($this->_dataLayer->getIndoor($userIndoor)) {
-                            $_SESSION['indoor'] = implode(", ", $userIndoor);
-                        }
-                        //data is not valid -> We've been spoofed!
-                        else {
-                            $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
-                        }
-
-//            //get data from profile 3 to session array
-//            if (isset($userOutdoor)) {
-//                if (!$this->_validator->validOutdoor($userOutdoor)) {
-//                    $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
-//                }
-//            }
-
-            //data is valid -> add to session
-                        if ($this->_dataLayer->getOutdoor($userOutdoor)) {
-                            $_SESSION['outdoor'] = implode(", ", $userOutdoor);
-                        }
-                        //data is not valid -> We've been spoofed!
-                        else {
-                            $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
-                        }
+            //get data from profile 3
+            if (isset($userOutdoor)) {
+                if (!$this->_validator->validOutdoor($userOutdoor)) {
+                    $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
+                }
+            }
 
             //if there are no errors, redirect user to summary page
             if (empty($this->_f3->get('errors'))) {
-
-                //$_SESSION['member']->setIndoorInterests($userIndoor);
-                //$_SESSION['member']->setOutdoorInterests($userOutdoor);
 
                 if (isset($userIndoor)) {
                     $_SESSION['member']->setIndoorInterests($userIndoor);
@@ -203,20 +176,11 @@ class Controller
                     $_SESSION['member']->setOutdoorInterests(array('No outdoor activities selected'));
                 }
 
-
-                //$_SESSION['membership']->setIndoorInterests($userIndoor);
-                //$_SESSION['membership']->setOutdoorInterests($userOutdoor);
-
                 $this->_f3->reroute('/summary');
             }
         }
-
-            //$this->_f3->set('indoors', getIndoor());
-
             $this->_f3->set('indoor', isset($userIndoor) ? $userIndoor : []);
             $this->_f3->set('outdoor', isset($userOutdoor) ? $userOutdoor : []);
-
-            //$this->_f3->set('outdoors', getOutdoor());
 
             //display a view
             $view = new Template();
@@ -229,7 +193,5 @@ class Controller
             echo $view->render('views/summary.html');
 
             session_destroy();
-
         }
-
 }
