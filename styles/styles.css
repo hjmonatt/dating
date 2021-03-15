@@ -161,6 +161,10 @@ hr{
     background-color: pink;
 }
 
+th, td {
+    color: hotpink;
+}
+
 /* Main Div */
 #main{
     background-color: black;

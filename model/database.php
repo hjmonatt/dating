@@ -9,7 +9,8 @@ class Database
      * Database constructor.
      * @param $dbh - dbh object passed in from controller.php
      */
-    function __construct($dbh) {
+    function __construct($dbh)
+    {
         $this->_dbh = $dbh;
     }
 
@@ -17,11 +18,11 @@ class Database
      * method to add a Member/PremiumMember object to database
      * @param $member - Member or PremiumMember object
      */
-    function insertMember($member)
+    function insert($member)
     {
         // define query
-        $sql = 'INSERT INTO member (fname, lname, age, gender, phone, email, state, seeking, bio, premium, interests, image)
-            VALUES (:fname, :lname, :age, :gender, :phone, :email, :state, :seeking, :bio, :premium, :interests, :image)';
+        $sql = 'INSERT INTO member (fname, lname, age, phone, email, state, gender, seeking, bio, premium, interests, image)
+            VALUES (:fname, :lname, :age, :phone, :email, :state, :gender, :seeking, :bio, :premium, :interests, :image)';
 
         // define statement statement
         $statement = $this->_dbh->prepare($sql);

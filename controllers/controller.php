@@ -21,7 +21,7 @@ class Controller
         $this->_validator = new Validate();
         $this->_dataLayer = new DataLayer();
         require_once $_SERVER['DOCUMENT_ROOT'] . "/../config.php";
-        $this->database = new DataLayer($dbh);
+        $this->database = new Database($dbh);
 
     }
 
@@ -164,8 +164,8 @@ class Controller
 
         //if the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //$userIndoor = $_POST['indoor'];
-            //$userOutdoor = $_POST['outdoor'];
+            $userIndoor = $_POST['indoor'];
+            $userOutdoor = $_POST['outdoor'];
 
             //validate indoor interests
             if (isset($userIndoor)) {
@@ -183,25 +183,25 @@ class Controller
 
             //if there are no errors, send user to summary page
             if (empty($this->_f3->get('errors'))) {
-                $userIndoor = implode(', ', $_POST['indoor']);//
-                $userOutdoor = implode(', ', $_POST['outdoor']);//
+                $userIndoor = implode(', ', $_POST['indoor']);
+                $userOutdoor = implode(', ', $_POST['outdoor']);
 
                 if (isset($userIndoor)) {
                     $_SESSION['member']->setIndoorInterests($userIndoor);
                 } else {
-                    $_SESSION['member']->setIndoorInterests('No indoor activities selected');//
+                    $_SESSION['member']->setIndoorInterests('No indoor activities selected');
                 }
                 if (isset($userOutdoor)) {
                     $_SESSION['member']->setOutdoorInterests($userOutdoor);
                 } else {
-                    $_SESSION['member']->setOutdoorInterests('No outdoor activities selected');//
+                    $_SESSION['member']->setOutdoorInterests('No outdoor activities selected');
                 }
 
                 $this->_f3->reroute('/summary');
             }
         }
-            $this->_f3->set('indoor', isset($userIndoor) ? $userIndoor : []);
-            $this->_f3->set('outdoor', isset($userOutdoor) ? $userOutdoor : []);
+            $this->_f3->set('userIndoor', isset($userIndoor) ? $userIndoor : []);
+            $this->_f3->set('userOutdoor', isset($userOutdoor) ? $userOutdoor : []);
 
             //display a view
             $view = new Template();
@@ -212,7 +212,7 @@ class Controller
         function summary()
         {
             // save member to database
-            $this->_database->insertMember($_SESSION['member']);
+            //$this->_database->insert($_SESSION['member']);
 
             //display a view
             $view = new Template();

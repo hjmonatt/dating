@@ -180,4 +180,5 @@ class Member
         $this->_bio = $bio;
     }
 
+
 }

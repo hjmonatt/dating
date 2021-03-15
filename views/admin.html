@@ -45,10 +45,12 @@
         </form>
     </div>
 </nav>
-
+<br><br>
 <h1>BOO'd UP</h1>
 
 <div class="container">
+    <br>
+    <br>
     <h2 class="pb-3">Memberships:</h2>
 
     <!-- Member Table -->
@@ -61,9 +63,10 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Age</th>
-                <th scope="col">Gender</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Email</th>
+                <th scope="col">State</th>
+                <th scope="col">Gender</th>
                 <th scope="col">Seeking</th>
                 <th scope="col">Bio</th>
                 <th scope="col">Premium</th>
@@ -79,13 +82,14 @@
                     <th scope="row">{{@member.member_id}}</th>
                     <td>{{ @member.fname }} {{ @member.lname }}</td>
                     <td>{{ @member.age }}</td>
-                    <td>{{ @member.gender }}</td>
                     <td>{{ @member.phone }}</td>
                     <td>{{ @member.email }}</td>
+                    <td>{{ @member.state }}</td>
+                    <td>{{ @member.gender }}</td>
                     <td>{{ @member.seeking }}</td>
                     <td>{{ @member.bio }}</td>
                     <td>
-                        <input type="checkbox" <check if="{{@member.premium}}">checked</check>>
+                        <input type="checkbox" <check if="{{ @member.premium }}">checked</check>>
                     </td>
                     <td>{{ @member.interests }}</td>
                     <td>{{ @member.image }}</td>
