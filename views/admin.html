@@ -42,54 +42,60 @@
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-            <a class="nav-link" aria-current="page" href="admin">Admin</a>
         </form>
     </div>
 </nav>
-<div class="container mt-5 border border-3 border-light rounded">
-    <br>
-    <div class="row g-0">
-        <!-- Left Side -->
-        <div class="col-md-6" id="summaryList">
-            <ul class="list-group">
-                <li class="list-group-item"><strong>Name: {{ @SESSION.member->getFName() }} {{ @SESSION.member->getLName() }}</strong></li>
-                <li class="list-group-item"><strong>Gender: {{ @SESSION.member->getGender() }}</strong></li>
-                <li class="list-group-item"><strong>Age: {{ @SESSION.member->getAge() }}</strong></li>
-                <li class="list-group-item"><strong>Phone: {{ @SESSION.member->getPhone() }}</strong></li>
-                <li class="list-group-item"><strong>Email: {{ @SESSION.member->getEmail() }}</strong></li>
-                <li class="list-group-item"><strong>State: {{ @SESSION.member->getState() }}</strong></li>
-                <li class="list-group-item"><strong>Seeking: {{ @SESSION.member->getSeeking() }}</strong></li>
-                <check if="{{ @SESSION.member instanceof PremiumMember }}">
-                    <li class="list-group-item"><strong>Interests:
-                        <p>{{ @SESSION.member->getIndoorInterests() }}, {{ @SESSION.member->getOutdoorInterests() }}</p>
-                        <!--<repeat group="{{ @SESSION.member->getIndoorInterests() }}" value="{{ @interest }}"> {{ @interest }}, </repeat>
-                        <repeat group="{{ @SESSION.member->getOutdoorInterests() }}" value="{{ @interest }}">{{ @interest }}, </repeat>-->
-                    </strong></li>
-                </check>
-            </ul>
-        </div>
-        <!-- Right Side -->
-        <div class="col-md-6">
-            <!-- Profile Image -->
-            <img class="img-fluid mb-5 mx-auto d-none d-md-block rounded" src="images/ghostProfile.png" alt="ghostProfile">
-            <!-- Bio -->
-            <label id="bioLabel"><strong>Biography</strong></label>
-            <div id="bioBlurb" class="text-center">
-                <h6>{{ ucfirst(@SESSION.member->getBio()) }}</h6>
-                <br>
-            </div>
-        </div>
-        <br>
-        <br>
+
+<h1>BOO'd UP</h1>
+
+<div class="container">
+    <h2 class="pb-3">Memberships:</h2>
+
+    <!-- Member Table -->
+    <div class="table-responsive">
+        <table id="member-table" class="table">
+
+            <!-- Table Head -->
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Seeking</th>
+                <th scope="col">Bio</th>
+                <th scope="col">Premium</th>
+                <th scope="col">Interests</th>
+                <th scope="col">Image</th>
+            </tr>
+            </thead>
+
+            <!-- Table Body -->
+            <tbody>
+            <repeat group="{{@members}}" value="{{@member}}">
+                <tr>
+                    <th scope="row">{{@member.member_id}}</th>
+                    <td>{{ @member.fname }} {{ @member.lname }}</td>
+                    <td>{{ @member.age }}</td>
+                    <td>{{ @member.gender }}</td>
+                    <td>{{ @member.phone }}</td>
+                    <td>{{ @member.email }}</td>
+                    <td>{{ @member.seeking }}</td>
+                    <td>{{ @member.bio }}</td>
+                    <td>
+                        <input type="checkbox" <check if="{{@member.premium}}">checked</check>>
+                    </td>
+                    <td>{{ @member.interests }}</td>
+                    <td>{{ @member.image }}</td>
+                </tr>
+            </repeat>
+            </tbody>
+        </table>
     </div>
-    <!-- Button -->
-    <div class="text-center">
-        <a class="btn btn-primary btn-lg">Contact Me!</a>
-    </div>
-    <br>
 </div>
-<br>
-<br>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

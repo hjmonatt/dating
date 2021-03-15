@@ -1,5 +1,4 @@
 <?php
-
 /**
  * controller for the dating web app.
  * This file contains methods that are called in index.php
@@ -13,6 +12,7 @@ class Controller
     private $_f3;
     private $_validator;
     private $_dataLayer;
+    private $_database;
 
     //constructor
     function __construct($f3)
@@ -20,6 +20,9 @@ class Controller
         $this->_f3 = $f3;
         $this->_validator = new Validate();
         $this->_dataLayer = new DataLayer();
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/../config.php";
+        $this->database = new DataLayer($dbh);
+
     }
 
     //displays home.html
@@ -161,35 +164,37 @@ class Controller
 
         //if the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $userIndoor = $_POST['indoor'];
-            $userOutdoor = $_POST['outdoor'];
+            //$userIndoor = $_POST['indoor'];
+            //$userOutdoor = $_POST['outdoor'];
 
             //validate indoor interests
             if (isset($userIndoor)) {
-                if (!$this->_validator->validIndoor($userIndoor)) {
+                if (!$this->_validator->validIndoor($_POST['indoor'])) {
                     $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
                 }
             }
 
             //validate outdoor interests
             if (isset($userOutdoor)) {
-                if (!$this->_validator->validOutdoor($userOutdoor)) {
+                if (!$this->_validator->validOutdoor($_POST['outdoor'])) {
                     $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
                 }
             }
 
             //if there are no errors, send user to summary page
             if (empty($this->_f3->get('errors'))) {
+                $userIndoor = implode(', ', $_POST['indoor']);//
+                $userOutdoor = implode(', ', $_POST['outdoor']);//
 
                 if (isset($userIndoor)) {
                     $_SESSION['member']->setIndoorInterests($userIndoor);
                 } else {
-                    $_SESSION['member']->setIndoorInterests(array('No indoor activities selected'));
+                    $_SESSION['member']->setIndoorInterests('No indoor activities selected');//
                 }
                 if (isset($userOutdoor)) {
                     $_SESSION['member']->setOutdoorInterests($userOutdoor);
                 } else {
-                    $_SESSION['member']->setOutdoorInterests(array('No outdoor activities selected'));
+                    $_SESSION['member']->setOutdoorInterests('No outdoor activities selected');//
                 }
 
                 $this->_f3->reroute('/summary');
@@ -206,6 +211,9 @@ class Controller
         //displays summary page
         function summary()
         {
+            // save member to database
+            $this->_database->insertMember($_SESSION['member']);
+
             //display a view
             $view = new Template();
             echo $view->render('views/summary.html');
@@ -213,4 +221,15 @@ class Controller
             //destroy the session
             session_destroy();
         }
+
+        function admin()
+        {
+            // get all saved members from the DB
+            $this->_f3->set('members', $this->_database->getMembers());
+
+            // render admin.html
+            $view = new Template();
+            echo $view->render('views/admin.html');
+        }
+
 }
