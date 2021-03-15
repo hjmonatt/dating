@@ -1,13 +1,19 @@
 <?php
-
+/*
+ * Heather Monatt
+ * March 14th, 2021
+ * model/database.php
+ * database layer
+ *
+ */
 class Database
-    {
-        // fields
-        private $_dbh;
+{
+    // fields
+    private $_dbh;
 
     /**
      * Database constructor.
-     * @param $dbh - dbh object passed in from controller.php
+     * @param $dbh - dbh object
      */
     function __construct($dbh)
     {
@@ -15,62 +21,74 @@ class Database
     }
 
     /**
-     * method to add a Member/PremiumMember object to database
-     * @param $member - Member or PremiumMember object
+     * insertMember() method - adds a Member/PremiumMember object to database
+     * @param $member - Member/PremiumMember object
      */
-    function insert($member)
+    function insertMember($member)
     {
-        // define query
-        $sql = 'INSERT INTO member (fname, lname, age, phone, email, state, gender, seeking, bio, premium, interests, image)
-            VALUES (:fname, :lname, :age, :phone, :email, :state, :gender, :seeking, :bio, :premium, :interests, :image)';
+        //define the query
+        $sql = "INSERT INTO member (fname, lname, age, phone, email, state, gender, seeking, bio, premium, interests, image)
+        VALUES (:fname, :lname, :age, :phone, :email, :state, :gender, :seeking, :bio, :premium, :interests, :image";
 
-        // define statement statement
+        //prepare the statement
         $statement = $this->_dbh->prepare($sql);
 
-        // assign variables for regular members
+        //assign regular members variables
         $premium = false;
         $interests = '';
-        $imagePath = ''; // we aren't saving any images, so we can ignore this path and make it empty
+        $imagePath = '';
 
-        // if PremiumMember, get interests
+        //PremiumMember variables
         if ($member instanceof PremiumMember) {
             $premium = true;
             $interests = $member->getIndoorInterests();
             $interests .=', ' . $member->getOutdoorInterests();
         }
 
-        // bind the parameters
-        $statement->bindParam(':fname', $member->getFname(), PDO::PARAM_STR);
-        $statement->bindParam(':lname', $member->getLname(), PDO::PARAM_STR);
-        $statement->bindParam(':age', $member->getAge(), PDO::PARAM_INT);
-        $statement->bindParam(':gender', $member->getGender(), PDO::PARAM_STR);
-        $statement->bindParam(':phone', $member->getPhone(), PDO::PARAM_STR);
-        $statement->bindParam(':email', $member->getEmail(), PDO::PARAM_STR);
-        $statement->bindParam(':state', $member->getState(), PDO::PARAM_STR);
-        $statement->bindParam(':seeking', $member->getSeeking(), PDO::PARAM_STR);
-        $statement->bindParam(':bio', $member->getBio(), PDO::PARAM_STR);
+        //bind the parameters
+        $fname = $_SESSION['member']->getFName();
+        $lname = $_SESSION['member']->getLName();
+        $age = $_SESSION['member']->getAge();
+        $gender = $_SESSION['member']->getGender();
+        $phone = $_SESSION['member']->getPhone();
+        $email = $_SESSION['member']->getEmail();
+        $state = $_SESSION['member']->getState();
+        $seeking = $_SESSION['member']->getSeeking();
+        $bio = $_SESSION['member']->getBio();
+
+        $statement->bindParam(':fname', $fname, PDO::PARAM_STR);
+        $statement->bindParam(':lname', $lname, PDO::PARAM_STR);
+        $statement->bindParam(':age', $age, PDO::PARAM_INT);
+        $statement->bindParam(':gender', $gender, PDO::PARAM_STR);
+        $statement->bindParam(':phone', $phone, PDO::PARAM_STR);
+        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+        $statement->bindParam(':state', $state, PDO::PARAM_STR);
+        $statement->bindParam(':seeking', $seeking, PDO::PARAM_STR);
+        $statement->bindParam(':bio', $bio, PDO::PARAM_STR);
         $statement->bindParam(':premium', $premium, PDO::PARAM_INT);
         $statement->bindParam(':interests', $interests, PDO::PARAM_STR);
         $statement->bindParam(':image', $imagePath, PDO::PARAM_STR);
-        // string
 
-        // execute results
+        //execute
         $statement->execute();
     }
 
+    /**
+     * getMembers() method - retreives Member/PremiumMember objects from database
+     * @param $member - Member/PremiumMember object
+     */
     function getMembers()
     {
-        // define query
-        $sql = 'SELECT * FROM member ORDER BY lname, fname';
+        //define the query
+        $sql = "SELECT * FROM member ORDER BY lname, fname";
 
-        // define statement
+        //prepare the statement
         $statement = $this->_dbh->prepare($sql);
 
-        // execute results
+        //execute
         $statement->execute();
 
-        // return results
+        //return all results
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-
 }

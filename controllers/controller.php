@@ -212,7 +212,7 @@ class Controller
         function summary()
         {
             // save member to database
-            //$this->_database->insert($_SESSION['member']);
+            //$this->_database->insertMember($_SESSION['member']);
 
             //display a view
             $view = new Template();
@@ -225,7 +225,7 @@ class Controller
         function admin()
         {
             // get all saved members from the DB
-            $this->_f3->set('members', $this->_database->getMembers());
+            //$this->_f3->set('members', $this->_database->getMembers());
 
             // render admin.html
             $view = new Template();
